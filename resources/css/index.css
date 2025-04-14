@@ -17,6 +17,7 @@
 }
 
 body{
+    direction: rtl;
     font-family: 'iranSans',sans-serif;
     margin: 0;
     padding: 0;
@@ -25,7 +26,9 @@ body{
     color: white;
 }
 
-
+*{
+    list-style: none;
+}
 
 
 
