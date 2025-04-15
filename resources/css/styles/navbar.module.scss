@@ -1,5 +1,5 @@
 .navbar{
-    @apply grid grid-cols-5 mx-auto w-10/12 p-2 ;
+    @apply fixed bottom-0 w-full md:top-0 md:grid  md:grid-cols-5 md:w-10/12 md:left-1/2 md:transform md:-translate-x-1/2 p-2 ;
     background-color: #252525;
     height: 4rem;
     >li{
@@ -15,4 +15,8 @@
        @apply flex justify-between items-center h-full ;
     
     }
-}
+
+    .mobileMenu{
+        @apply flex justify-between p-2;
+    }
+}       
