@@ -5,7 +5,7 @@ export default function Home(){
     return(
        <>
           <Navbar/>
-          <Slider/>
+          <Slider imgs={["img1","img2","img3"]}/>
        </>
     )
 }

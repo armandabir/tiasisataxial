@@ -9,15 +9,5 @@ export default defineConfig({
         }),
       react(),
     ],
-    server: {
-        hmr: {
-            overlay: true,
-        },
-        watch: {
-            usePolling: true,
-        },
-    },
-    build: {
-        sourcemap: true, // Enable source maps
-    },
+ 
 });

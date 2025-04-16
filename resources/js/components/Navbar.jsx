@@ -21,7 +21,7 @@ export default function Navbar(){
                     <li>پروژه ها</li>
                 </ul>
             </li>
-            <li className="hidden md:block">
+            <li className={`${styles.buttons} hidden md:block`}>
                 <div className="w-10/12 mx-auto text-center relative">
                     <Button className="w-1/4 text-md bg-zinc-500 ml-2 relative">
                         <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>

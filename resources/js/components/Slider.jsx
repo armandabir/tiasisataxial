@@ -1,9 +1,11 @@
-import img1 from "./../../assets/1.jpg"
+
 import styles from "./../../css/styles/slider.module.scss"
-export default function Slider(){
+import MySwiper from "./MySwiper"
+
+export default function Slider({imgs}){
     return (
         <div className={styles.slider}>
-            <img src={img1} alt="" />
+            <MySwiper imgs={imgs}/>
         </div>
     )
 }
