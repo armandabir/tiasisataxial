@@ -1,7 +1,7 @@
 
 import styles from "./../../css/styles/slider.module.scss"
 import MySwiper from "./MySwiper"
-import {Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import {Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
 import img1 from "./../../assets/1.jpg"
 import img2 from "./../../assets/1.jpg"
@@ -12,11 +12,12 @@ export default function Slider(){
     return (
         <div className={styles.slider}>
             <MySwiper imgs={[img1,img2,img3,img4,img5]} className="h-full" 
-                    modules={[Autoplay,Navigation, Pagination, Scrollbar, A11y]}
+                    modules={[Autoplay,Navigation, Pagination, Scrollbar]}
                     autoplay={{
                         delay:3000,
-                        disableOnInteraction:false,
+                        disableOnInteraction:true,
                     }}
+                   
                     spaceBetween={50}
                     slidesPerView={1}
                     pagination={{
@@ -28,7 +29,7 @@ export default function Slider(){
                       
                     }}
                     onSlideChange={(swiper)=>{
-                        console.log(swiper.activeIndex)
+                        console.log(swiper)
                         const bullets = document.querySelectorAll(`.${styles.customBullet}`);
                         bullets.forEach((bullet, index) => {
                             if (index === swiper.activeIndex) {
@@ -38,9 +39,16 @@ export default function Slider(){
                             }
                         });
                     }}
-             
+                    navigation={{
+                        nextEl:`.${styles.customNext}`,
+                        prevEl:`.${styles.customPrv}`
+                    }}
             />
             <div className={styles.customPagination}></div>
+            <div className={styles.navigationButtons}>
+                <button className={styles.customPrv}></button>
+                <button className={styles.customNext}></button>
+            </div>
         </div>
     )
 }
