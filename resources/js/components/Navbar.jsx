@@ -2,7 +2,6 @@ import styles from "./../../css/styles/navbar.module.scss"
 import logo from  "./../../assets/logo.png"
 import Button from "./Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar(){
     return ( 

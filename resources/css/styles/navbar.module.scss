@@ -23,6 +23,7 @@
   
 
     .mobileMenu{
-        @apply flex justify-between p-2;
+        @apply flex justify-between p-2 bg-red-500 h-full z-50 relative;
+     
     }
 }       
