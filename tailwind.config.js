@@ -11,7 +11,12 @@ module.exports = {
     fontFamily:{
       'iranSansBold':'iranSans_bold'
     },
-    extend: {},
+   
+    extend: {
+      colors:{
+        'mainBlue':"#111B2F"
+       },
+    },
   },
   plugins: [],
 }

@@ -12,6 +12,7 @@ import img2 from "./../../assets/1.jpg"
 import img3 from "./../../assets/1.jpg"
 import img4 from "./../../assets/1.jpg"
 import img5 from "./../../assets/1.jpg"
+import mouseShape from "./../../assets/mouse.png"
 export default function Slider(){
     return (
         <div className={styles.slider}>
@@ -49,16 +50,29 @@ export default function Slider(){
                     }}
             />
             <div className={styles.swiperControls}>
+                    
+                <div className={styles.emptySpace}>
+                    <h1 className="mt-[10%] font-bold md:text-6xl md:text-right text-4xl text-center">
+                        شرکت فنی مهندسی اکسیال
+                    </h1>
+                    <h2 className="mt-[8%] md:text-3xl text-2xl md:text-right text-center">
+                        ارائه کننده‌ی انواع خدمات مهندسی و تاسیسات ساختمان   
+                    </h2>
+                </div>
                 <div className={styles.navigationButtons}>
                     <button className={styles.customPrv}><FontAwesomeIcon icon={faChevronRight}/></button>
                     <button className={styles.customNext}><FontAwesomeIcon icon={faChevronLeft}/></button>
                 </div>
                 <div>
-                    <p className="text-justify">
+                    <p className="md:w-1/2 text-justify">
                     لورم  ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از  طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و  سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای  متنوع با هدف بهبود ابزارهای کاربردی می باشد،
                     </p>
                 </div>
                 <div className={styles.customPagination}></div>
+                <div className={styles.mouseShape}>
+                    <img src={mouseShape} alt="" />
+                </div>
+                <div className={styles.socialMedia}></div>
             </div>
             <div className={styles.transitonColor}></div>
         </div>
