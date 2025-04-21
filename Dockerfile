@@ -1,23 +1,47 @@
-FROM docker.iranrepo.ir/php:8.2-fpm
-RUN docker-php-ext-install pdo pdo_mysql
+# Use the official PHP image with Apache
+FROM php:8.2-apache
 
-RUN mkdir /var/www/.composer \
-        && chown www-data:www-data /var/www/.composer
-COPY --from=docker.iranrepo.ir/composer:2 /usr/bin/composer /usr/bin/composer
+# Set working directory
+WORKDIR /var/www/html
 
-RUN apt-get update --fix-missing -y \
-        && apt-get upgrade -y \
-        && apt-get install -y nano htop procps
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    libzip-dev \
+    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
-RUN apt-get install -y libcurl4-openssl-dev
-RUN docker-php-ext-install curl
-########## SSL ##########
-RUN apt-get install -y --no-install-recommends openssl
+# Install Composer
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-RUN apt update
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
 
-######### Mysql client ######
-RUN apt-get install -y default-mysql-client
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
 
-RUN apt-get install -y --no-install-recommends libzip-dev unzip \
-     && docker-php-ext-install zip \
+# Copy project files
+COPY . /var/www/html
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/bootstrap/cache
+
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
+
+# Install Node.js dependencies
+RUN npm install && npm run build
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
