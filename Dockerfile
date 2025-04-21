@@ -37,9 +37,6 @@ RUN chown -R www-data:www-data /var/www/html \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Install Node.js dependencies
-
-
 # Expose port 80
 EXPOSE 80
 
