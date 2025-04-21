@@ -38,7 +38,7 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN composer install --no-dev --optimize-autoloader
 
 # Install Node.js dependencies
-RUN npm install && npm run build
+
 
 # Expose port 80
 EXPOSE 80
