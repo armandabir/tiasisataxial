@@ -38,4 +38,3 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
