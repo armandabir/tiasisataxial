@@ -11,7 +11,7 @@ WORKDIR /app
 COPY . .
 
 # Install Laravel and React dependencies
-RUN composer install
+
 RUN npm install && npm run build
 
 # Serve Laravel application
