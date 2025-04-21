@@ -12,7 +12,6 @@ COPY . .
 
 # Install Laravel and React dependencies
 
-RUN npm install && npm run build
 
 # Serve Laravel application
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=$PORT"]
