@@ -37,4 +37,4 @@ RUN chown -R www-data:www-data /var/www/html \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-EXPOSE 3000
+EXPOSE 80
