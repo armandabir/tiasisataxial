@@ -37,8 +37,5 @@ RUN chown -R www-data:www-data /var/www/html \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port 80
-EXPOSE 80
-
-# Start Apache
-CMD ["apache2-foreground"]
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
