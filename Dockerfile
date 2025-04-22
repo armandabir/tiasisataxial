@@ -23,6 +23,6 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Expose port
 EXPOSE 8000
-
+EXPOSE 3000
 # Start Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=${PORT}"]
