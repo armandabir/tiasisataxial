@@ -25,4 +25,5 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE $PORT
 
 # Start Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=${PORT}"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=$(env PORT)"]
+
