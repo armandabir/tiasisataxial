@@ -22,8 +22,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --no-dev --optimize-autoloader
 
 # Expose port
-EXPOSE $PORT
+EXPOSE 3000
 
 # Start Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=$(env PORT)"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=3000"]
 
