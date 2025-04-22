@@ -72,7 +72,14 @@ export default function Slider(){
                 <div className={styles.mouseShape}>
                     <img src={mouseShape} alt="" />
                 </div>
-                <div className={styles.socialMedia}></div>
+                <div className={styles.socialMedia}>
+                    <div className={styles.btContainer}>
+                        <a href="">twitter</a>
+                        <a href="">Instagram</a>
+                        <a href="">Facebook</a>
+                    </div>
+                    
+                </div>
             </div>
             <div className={styles.transitonColor}></div>
         </div>

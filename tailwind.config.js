@@ -16,6 +16,16 @@ module.exports = {
       colors:{
         'mainBlue':"#111B2F"
        },
+
+      minHeight:{
+        'h640':'640px'
+      },
+
+      height:{
+        "640":"640px"
+      }
+
+
     },
   },
   plugins: [],

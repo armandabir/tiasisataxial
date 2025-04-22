@@ -7,13 +7,21 @@
 
     .swiperControls{
         @apply md:grid md:grid-rows-2  md:grid-flow-col absolute top-0 left-0
-         border-red-50/30 border w-full h-full md:w-10/12 mx-auto md:left-1/2 md:transform md:-translate-x-1/2 z-40 p-8;
+         border-red-50/10 border w-full h-full md:w-10/12 mx-auto md:left-1/2 md:transform md:-translate-x-1/2 z-40 p-8;
 
         .socialMedia{
-            @apply w-40  row-span-12 hidden md:block md:border-x border-red-50/50;
+            @apply w-40 row-span-12 hidden md:block  md:border-x border-red-50/10;
+            
+            .btContainer{
+                @apply md:flex md:flex-col justify-around h-2/3 mt-[100%];
+
+                a{
+                    @apply -rotate-90 text-left w-1/2 text-white/50;
+                }
+            }
         }
         .emptySpace{
-            @apply row-span-2 w-full h-1/2 md:h-full border-b border-red-50/50;
+            @apply row-span-2 w-full h-1/2 md:h-full border-b border-red-50/10;
         }
 
         .customPagination{
