@@ -1,4 +1,8 @@
 .container {
     @apply bg-[url('./../../assets/about-us-bg-img.jpg')] bg-no-repeat bg-cover;
-    @apply bg-mainBlue md:h-640 overflow-hidden my-[5%] ;
+    @apply bg-mainBlue md:h-640 overflow-hidden my-[5%]  relative ;
+
+    .cards{
+        @apply w-full my-[5%] z-20 relative   ;
+    }
 }
