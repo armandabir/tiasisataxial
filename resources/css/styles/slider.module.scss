@@ -13,7 +13,7 @@
             @apply w-40 row-span-12 hidden md:block  md:border-x border-red-50/10;
             
             .btContainer{
-                @apply md:flex md:flex-col justify-around h-2/3 mt-[100%];
+                @apply md:flex md:flex-col justify-around h-2/3 mt-[100%] items-center;
 
                 a{
                     @apply -rotate-90 text-left w-1/2 text-white/50;
@@ -49,7 +49,7 @@
         }
 
         .mouseShape{
-            @apply  p-4 mx-auto hidden col-span-2 h-20 md:block;
+            @apply  p-4 mx-auto transform -translate-x-full hidden col-span-2 h-20 md:block;
             img{
                 @apply w-full object-cover;
             }

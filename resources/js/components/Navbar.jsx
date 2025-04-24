@@ -28,7 +28,7 @@ export default function Navbar(){
                             0
                         </span>
                     </Button>
-                    <Button className="w-3/4 bg-orange-400 text-md">ورود / ثبت نام</Button>
+                    <Button className="w-3/4 bg-orange-400 xl:p-3 sm:text-xs">ورود / ثبت نام</Button>
                 </div>
             </li>
             <ul className={`${styles.mobileMenu} md:hidden`}>
