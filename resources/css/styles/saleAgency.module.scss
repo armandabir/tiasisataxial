@@ -1,0 +1,11 @@
+.container{
+    @apply h-640 xl:h-96 bg-[url("./../../assets/section3bg.jpg")] bg-no-repeat bg-center relative z-20 ;
+    &::before{
+        @apply absolute inset-0 h-4/5 top-[10%] bg-gradient-to-b from-mainBlue from-20% via-transparent via-40% z-10;
+        content: "";
+    }
+    &::after{
+        @apply absolute inset-0 bg-gradient-to-t from-mainBlue from-10% via-transparent via-25% z-10;
+        content: "";
+    }
+}

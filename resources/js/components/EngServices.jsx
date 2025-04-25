@@ -17,7 +17,7 @@ export default function EngServices(){
                 <Card1 className="bg-[url('/resources/assets/rectangle3.jpg')] bg-auto" icon={bolt3} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از تخصص و تجربه، در تمامی مراحل طراحی، نظارت و مشاوره فنی پروژه‌های ساختمانی همراه شما هستند تا بهترین راهکارهای مهندسی را ارائه دهند"/>
                 <Card1 className="bg-[url('/resources/assets/rectangle4.jpg')] bg-auto" icon={bolt4} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از تخصص و تجربه، در تمامی مراحل طراحی، نظارت و مشاوره فنی پروژه‌های ساختمانی همراه شما هستند تا بهترین راهکارهای مهندسی را ارائه دهند"/>
             </div>
-            <TransitionSection/>
+            <TransitionSection className="h-1/4 bottom-0 z-30"/>
         </section>
     )
 }   
