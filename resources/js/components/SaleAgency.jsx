@@ -3,6 +3,7 @@ import MySwiper from "./MySwiper"
 import {Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
  import bolt1 from "./../../assets/bolt1.png"
 import Card1 from "./Card1"
+import Button from "./Button";
 export default function SaleAgency(){
     return(
         <section className={styles.container}>
@@ -39,8 +40,9 @@ export default function SaleAgency(){
                     <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>
                 ]}
                 />
-                <div className="md:w-1/4 mx-auto shrink-0">
-                    <h3>نمایندگی فروش تجهیزات</h3>
+                <div className="md:w-1/4 mx-auto shrink-0 text-center">
+                    <h2 className="text-3xl my-[10%] font-iranSansBold">نمایندگی فروش تجهیزات</h2>
+                    <Button className="w-2/4 my-[10%] bg-orange-400 xl:p-3">مشاهده نمایندگی</Button>
                 </div>
             </div>
            
