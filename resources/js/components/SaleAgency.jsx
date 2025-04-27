@@ -4,6 +4,7 @@ import {Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
  import bolt1 from "./../../assets/bolt1.png"
 import Card1 from "./Card1"
 import Button from "./Button";
+import Card2 from "./Card2";
 export default function SaleAgency(){
     return(
         <section className={styles.container}>
@@ -34,10 +35,8 @@ export default function SaleAgency(){
 
                 sectionCard={[
                     <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>,
-                    <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>,
-                    <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>,
-                    <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>,
-                    <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از "/>
+                    <Card2 img="../../assets/ayegh.jpg" tilte="دیگ چگالی" likes={25} price={700}/>
+                  
                 ]}
                 />
                 <div className="md:w-1/4 mx-auto shrink-0 text-center">
