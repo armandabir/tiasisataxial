@@ -42,7 +42,7 @@ export default function SaleAgency(){
                 />
                 <div className="md:w-1/4 mx-auto shrink-0 text-center">
                     <h2 className="text-3xl my-[10%] font-iranSansBold">نمایندگی فروش تجهیزات</h2>
-                    <Button className="w-2/4 my-[10%] bg-orange-400 xl:p-3">مشاهده نمایندگی</Button>
+                    <Button className="w-2/4 my-[5%] bg-orange-400 xl:p-3">مشاهده نمایندگی</Button>
                 </div>
             </div>
            
