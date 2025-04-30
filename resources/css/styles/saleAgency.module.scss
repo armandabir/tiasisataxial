@@ -8,4 +8,13 @@
         @apply absolute inset-0 bg-gradient-to-t from-mainBlue from-10% via-transparent via-25% z-10;
         content: "";
     }
+
+    .mynextBt{
+        @apply md:hidden text-black block rounded-none cursor-pointer absolute top-1/4 left-0 transform -translate-y-1/2 w-6 h-1/6 bg-gray-400/80 z-40;
+    }
+
+
+    .myprevBt{
+        @apply md:hidden text-black block rounded-none cursor-pointer absolute top-1/4 right-0 transform -translate-y-1/2 w-6 h-1/6 bg-gray-400/80 z-40;
+    }
 }

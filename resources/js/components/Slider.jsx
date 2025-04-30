@@ -34,7 +34,7 @@ export default function Slider(){
                       
                     }}
                     onSlideChange={(swiper)=>{
-                        console.log(swiper)
+                        // console.log(swiper)
                         const bullets = document.querySelectorAll(`.${styles.customBullet}`);
                         bullets.forEach((bullet, index) => {
                             if (index === swiper.activeIndex) {
