@@ -36,7 +36,7 @@ export default function Card2({img,tilte,initLikes,price,like}){
                     
                 </div>
                 <hr />  
-                <div className="flex justify-between">
+                <div className="flex justify-between my-2">
                     <span>قیمت</span> <span>{`${price} هزار تومان`}</span>
                 </div>
             </div>

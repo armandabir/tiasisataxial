@@ -1,0 +1,7 @@
+.shop{
+    @apply h-640 md:h-96;
+
+    .banner{
+        @apply h-3/4 w-10/12 bg-white mx-auto my-[5%] rounded-2xl;
+    }
+}
