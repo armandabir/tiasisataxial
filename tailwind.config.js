@@ -22,7 +22,12 @@ module.exports = {
       },
 
       height:{
-        "640":"640px"
+        "640":"640px",
+        "70vh":"70vh"
+      },
+
+      boxShadow:{
+        "myinShadow":"inset 0 0 4px 4px rgb(0 0 0 / 1.00)"
       }
 
 

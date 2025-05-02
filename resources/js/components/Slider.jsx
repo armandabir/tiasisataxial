@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import img1 from "./../../assets/1.jpg"
 import img2 from "./../../assets/1.jpg"
 import img3 from "./../../assets/1.jpg"

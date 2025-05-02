@@ -11,9 +11,9 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight
 export default function SaleAgency(){
     return(
         <section className={styles.container}>
-            <div className="relative z-30 md:flex xl:flex-row flex-col flex-wrap md:px-20">
+            <div className="relative z-30 flex xl:flex-row flex-col md:px-20">
                 <MySwiper 
-                className="h-full md:w-3/5 shrink-0" 
+                className="h-full md:w-3/5 shrink-0 mx-0 md:mb-[10vh] md:mt-0 my-[10vh]" 
                 modules={[Autoplay,Navigation, Pagination, Scrollbar]}
                 autoplay={{
                     delay:4000,
@@ -48,7 +48,7 @@ export default function SaleAgency(){
                 <button className={styles.mynextBt}><FontAwesomeIcon icon={faChevronLeft}/></button>
                 <button className={styles.myprevBt}><FontAwesomeIcon icon={faChevronRight} /></button>
                 
-                <div className="md:w-2/5 mx-auto shrink-0 text-center">
+                <div className="md:w-2/5 mx-auto text-center md:order-last order-first mt-[10vh]">
                     <h2 className="text-3xl my-[10%] font-iranSansBold">نمایندگی فروش تجهیزات</h2>
                     <Button className="w-2/4 my-[5%] bg-orange-400 xl:p-3">مشاهده نمایندگی</Button>
                 </div>

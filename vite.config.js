@@ -7,7 +7,24 @@ export default defineConfig({
             input: ['resources/css/index.css', 'resources/js/index.jsx'],
             refresh: true,
         }),
+       
+        
+
+        
       react(),
     ],
- 
+
+    server: {
+        host: '0.0.0.0', // Use localhost or your machine's IP address
+        port: 5173, // Ensure the port matches your setup
+        hmr: {
+            host: '192.168.1.52', // Use localhost for HMR
+        },
+        cors: {
+            origin: '*', // Allow all origins (adjust as needed)
+            methods: ['GET', 'POST'],
+            headers: ['Content-Type', 'Authorization']
+          }
+      
+    },
 });
