@@ -1,5 +1,5 @@
 .slider{
-    @apply w-full h-screen;
+    @apply w-full h-screen mb-[13%];
 
     img{
         @apply w-full h-full object-cover;
@@ -59,7 +59,7 @@
 
 
     .transitonColor{
-        @apply  h-1/4 w-full absolute bottom-0 z-30 bg-gradient-to-t from-mainBlue;
+        @apply  h-1/4 w-full absolute bottom-0 transform translate-y-14 md:translate-y-0 z-30 bg-gradient-to-t from-mainBlue;
     }
 
 

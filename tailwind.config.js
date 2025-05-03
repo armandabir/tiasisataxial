@@ -23,7 +23,7 @@ module.exports = {
 
       height:{
         "640":"640px",
-        "70vh":"70vh"
+        "900":"900px"
       },
 
       boxShadow:{

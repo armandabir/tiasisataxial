@@ -48,7 +48,7 @@ export default function SaleAgency(){
                 <button className={styles.mynextBt}><FontAwesomeIcon icon={faChevronLeft}/></button>
                 <button className={styles.myprevBt}><FontAwesomeIcon icon={faChevronRight} /></button>
                 
-                <div className="md:w-2/5 mx-auto text-center md:order-last order-first mt-[10vh]">
+                <div className="md:w-2/5 mx-auto text-center md:order-last order-first md:mt-[10vh] mt-[20vh]">
                     <h2 className="text-3xl my-[10%] font-iranSansBold">نمایندگی فروش تجهیزات</h2>
                     <Button className="w-2/4 my-[5%] bg-orange-400 xl:p-3">مشاهده نمایندگی</Button>
                 </div>

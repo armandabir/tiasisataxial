@@ -1,3 +1,4 @@
+import Approch from "../components/Approch";
 import EngServices from "../components/EngServices";
 import Navbar from "../components/Navbar";
 import SaleAgency from "../components/SaleAgency";
@@ -12,6 +13,7 @@ export default function Home(){
           <EngServices/>
           <SaleAgency/>
           <Shop/>
+          <Approch/>
           <div className="min-h-20"></div>
        </>
     )
