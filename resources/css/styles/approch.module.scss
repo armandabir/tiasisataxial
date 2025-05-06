@@ -10,23 +10,45 @@
           top-3/4 transform -translate-y-3/4 rounded-xl bg-black/40 backdrop-blur-sm;
 
             .title{
-              @apply text-center font-iranSansBold text-4xl;
+              @apply text-center font-iranSansBold md:text-4xl;
             }
 
             .logo{
-              @apply mx-auto -translate-y-1/2;
+              @apply mx-auto -translate-y-1/2 rounded-2xl;
             }
 
             .steps{
-              @apply flex justify-around my-[5%];
+              @apply flex flex-row md:flex-col justify-around my-[2%];
                
               h3{
-                @apply w-1/6 p-4 text-center text-balance ;
+                @apply md:w-1/6 p-4 text-center text-balance;
+                &:nth-child(3){
+                  @apply md:w-1/4;
+                }
+              
               }
             }
         }
 
         
+    }
+
+
+    .progress{
+      height: 90%;
+      
+      @apply w-1 md:w-4/6 md:h-1 mx-auto bg-white text-center flex flex-col md:flex-row justify-between ;
+    
+
+   
+
+      div{
+        @apply w-5 h-5 bg-orange-500 rounded-full border-2 border-white transform md:-translate-y-2 translate-x-2;
+
+        &:nth-child(3){
+          @apply md:-translate-x-2
+        }
+      }
     }
     
 }
