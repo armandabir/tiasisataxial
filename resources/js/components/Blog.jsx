@@ -1,5 +1,6 @@
 import styles from "./../../css/styles/blog.module.scss"
 import Button from "./Button"
+import Card3 from "./Card3"
 export default function Blog(){
     return(
         <section className={styles.Blog}>
@@ -9,7 +10,7 @@ export default function Blog(){
                     <Button className= "w-full bg-orange-400">مشاهده وبلاگ</Button>
                 </div>
                 <div className="w-3/4">
-
+                    <Card3 img="" tilte="" date=""/>
                 </div>
             </div>
         </section>
