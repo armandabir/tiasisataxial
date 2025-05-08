@@ -1,0 +1,8 @@
+.Blog{
+    @apply md:h-500;
+
+    .container{
+        @apply flex flex-col md:flex-row md:w-10/12 md:h-5/6 mx-auto ;
+    }
+
+}

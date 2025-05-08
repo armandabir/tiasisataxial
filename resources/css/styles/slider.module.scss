@@ -1,5 +1,5 @@
 .slider{
-    @apply w-full h-screen mb-[13%];
+    @apply w-full h-screen mb-[13%] md:mb-[8%];
 
     img{
         @apply w-full h-full object-cover;
