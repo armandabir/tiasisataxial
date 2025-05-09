@@ -1,8 +1,6 @@
 import styles from "./../../css/styles/saleAgency.module.scss"
 import MySwiper from "./MySwiper"
 import {Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
-import bolt1 from "./../../assets/bolt1.png"
-import Card1 from "./Card1"
 import Button from "./Button";
 import Card2 from "./Card2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

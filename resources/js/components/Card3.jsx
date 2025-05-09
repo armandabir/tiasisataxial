@@ -1,16 +1,23 @@
-import styles from "./../../css/styles/Card2.module.scss";
+import styles from "./../../css/styles/Card3.module.scss";
+import arrowLeft from "./../../assets/ArrowLeft.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 export default function Card3({img,tilte,date}){
     return (
-        <article className={styles.card2}>
+        <article className={styles.card3}>
             <div className="h-60 rounded-xl overflow-hidden">
                 <img src={img} alt="" />
             </div>
+            <div className={styles.date}>
+                <span>{date}</span>
+                <FontAwesomeIcon className="mr-2" icon={faCalendarDays}/>
+            </div>
             <div>
-                <h3 className="my-2">{tilte}</h3>
+                <h3 className="my-2 text-xl text-center">{tilte}</h3>
            
-                <hr />  
-                <div className="flex justify-between my-2">
-                    <span>قیمت</span> <span>{`${price} هزار تومان`}</span>
+                <div className={styles.readMore}>
+                    <span>مطالعه بیشتر</span>
+                    <img src={arrowLeft} alt="" />
                 </div>
             </div>
         </article>
