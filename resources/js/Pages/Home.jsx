@@ -1,4 +1,5 @@
 import Approch from "../components/Approch";
+import Apps from "../components/Apps";
 import Blog from "../components/Blog";
 import EngServices from "../components/EngServices";
 import Navbar from "../components/Navbar";
@@ -16,6 +17,7 @@ export default function Home(){
           <Shop/>
           <Approch/>
           <Blog/>
+          <Apps/>
           <div className="min-h-20"></div>
        </>
     )
