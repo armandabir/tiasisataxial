@@ -1,3 +1,50 @@
 .Footer{
-    @apply h-900 md:h-500 bg-[url("./../../assets/footbgMobile.jpg")] md:bg-[url("./../../assets/footbg.jpg")] bg-cover md:bg-contain bg-no-repeat;
+    @apply md:h-500 bg-[url("./../../assets/footbgMobile.jpg")] md:bg-[url("./../../assets/footbg.jpg")] bg-cover md:bg-contain bg-no-repeat md:p-10;
+     div {
+        @apply  p-5;
+    }
+    .upside{
+        @apply md:grid md:grid-cols-4 md:gap-5;
+        .quickAccess{
+            h3 {
+                @apply text-[18px] font-iranSansBold;
+            }
+            ul {
+               @apply flex md:flex-col flex-wrap gap-x-[10%] justify-between  md:items-start items-center;
+            
+                li{
+                    @apply basis-1/3 md:my-[8%];
+                    list-style:disc;
+                }
+            }
+        }
+        
+        .contact{
+            h3 {
+                @apply text-[18px] font-iranSansBold;
+            }
+            ul {
+                li{
+                    @apply flex justify-between md:my-[8%];
+                }
+            }
+        }
+
+        .certs{
+            h3 {
+                @apply text-[18px] font-iranSansBold;
+            }
+        }
+    }
+
+    .downside{
+        @apply md:flex md:justify-around;
+        .social{
+            @apply flex justify-around basis-1/4 md:order-last md:p-0;
+            div{
+                @apply px-4 py-3 self-center text-3xl border border-white/50 rounded-full;
+            }
+        }
+        
+    }
  }
