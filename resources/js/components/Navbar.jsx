@@ -3,6 +3,7 @@ import logo from  "./../../assets/logo.png"
 import Button from "./Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 export default function Navbar(){
     return ( 
         <nav className={styles.navbar}>
@@ -31,6 +32,9 @@ export default function Navbar(){
                     <Button className="w-3/4 bg-orange-400 xl:p-3 sm:text-xs">ورود / ثبت نام</Button>
                 </div>
             </li>
+            <div className={styles.callBt}>
+                <a href=""></a>
+            </div>
             <ul className={`${styles.mobileMenu} md:hidden`}>
                 <li>
                     <ul>
@@ -38,7 +42,7 @@ export default function Navbar(){
                         <li>موبایل</li>
                     </ul>
                 </li>
-
+               
                 <li>
                     <ul>
                         <li>موبایل</li>

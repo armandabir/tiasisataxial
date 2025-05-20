@@ -22,7 +22,7 @@ export default defineConfig({
         host: '0.0.0.0', // Use localhost or your machine's IP address
         port: 5173, // Ensure the port matches your setup
         hmr: {
-            host: '192.168.1.50', // Use localhost for HMR
+            host: '192.168.125.184', // Use localhost for HMR
         },
         cors: {
             origin: '*', // Allow all origins (adjust as needed)
