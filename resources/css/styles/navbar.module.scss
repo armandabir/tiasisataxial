@@ -4,7 +4,7 @@
 .navbar{
     @apply fixed bottom-0 w-full md:top-0 md:grid md:grid-cols-5 xl:w-10/12 
     md:left-1/2 md:transform md:-translate-x-1/2 md:p-2 backdrop-blur-sm z-50 md:bg-[#25252544] ;
-    // background-color: ;
+
     height: 80px;
      &::after{
             @apply absolute bg-[#1b52b7] w-16 h-16 rounded-full -top-10 left-1/2 
