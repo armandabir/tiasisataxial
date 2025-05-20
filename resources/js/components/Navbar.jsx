@@ -32,11 +32,19 @@ export default function Navbar(){
                 </div>
             </li>
             <ul className={`${styles.mobileMenu} md:hidden`}>
-                <li>موبایل</li>
-                <li>موبایل</li>
-                <li>موبایل</li>
-                <li>موبایل</li>
-                <li>موبایل</li>
+                <li>
+                    <ul>
+                        <li>موبایل</li>
+                        <li>موبایل</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul>
+                        <li>موبایل</li>
+                        <li>موبایل</li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     )
