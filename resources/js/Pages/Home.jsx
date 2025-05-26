@@ -3,9 +3,9 @@ import Apps from "../components/Apps";
 import Blog from "../components/Blog";
 import EngServices from "../components/EngServices";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import SaleAgency from "../components/SaleAgency";
 import Shop from "../components/Shop";
+import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
 
 export default function Home(){
