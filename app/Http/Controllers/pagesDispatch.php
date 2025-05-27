@@ -13,7 +13,7 @@ class pagesDispatch extends Controller
      */
     public function index()
     {
-        //
+        return view("index");
     }
 
     /**
