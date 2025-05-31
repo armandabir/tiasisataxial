@@ -1,15 +1,46 @@
+
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
 .Header{
     @apply relative h-500;
 }
+
+.content{
+    @apply absolute z-20 w-32 top-1/2 right-1/3 translate-x-2/3;
+    h3{
+        @apply font-iranSansBold text-xl md:text-2xl mb-6;
+    }
+    ul{
+        @apply flex justify-between;
+    }
+}
+
+.searchBox{
+    @apply w-1/2 h-16 bottom-0 left-1/2 -translate-x-1/2 
+    absolute z-20 justify-between flex bg-gray-600 rounded-full px-10 items-center;
+
+    .search{
+        @apply w-1/2 relative;
+
+        
+            &::before{
+                @apply w-8 h-8 top-1/2 right-0 -translate-y-1/2 absolute bg-red-600 z-40;
+                content: "";
+            }
+
+
+        input {
+            @apply w-full rounded-full h-10 text-black px-10;
+
+        }
+    }
+}
+
 
 .headerBg{
     @apply h-full w-full bg-[url("./../../../assets/shopsection.png")] bg-center
      bg-no-repeat bg-cover z-10 absolute;
         &::before{
             content: "";
-            @apply h-full w-full top-0 left-0 bg-black/70 absolute z-20 ;
+            @apply h-full w-full top-0 left-0 bg-black/70 absolute ;
         }
-    
-
-
 }
