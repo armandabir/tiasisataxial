@@ -1,0 +1,15 @@
+.Header{
+    @apply relative h-500;
+}
+
+.headerBg{
+    @apply h-full w-full bg-[url("./../../../assets/shopsection.png")] bg-center
+     bg-no-repeat bg-cover z-10 absolute;
+        &::before{
+            content: "";
+            @apply h-full w-full top-0 left-0 bg-black/70 absolute z-20 ;
+        }
+    
+
+
+}
