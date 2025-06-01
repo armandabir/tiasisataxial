@@ -15,7 +15,7 @@
 }
 
 .searchBox{
-    @apply w-1/2 h-16 bottom-0 left-1/2 -translate-x-1/2 
+    @apply md:w-1/2 h-16 bottom-0 left-1/2 -translate-x-1/2 
     absolute z-20 justify-between flex bg-gray-600 rounded-full px-10 items-center;
 
     .search{
@@ -23,8 +23,13 @@
 
         
             &::before{
-                @apply w-8 h-8 top-1/2 right-0 -translate-y-1/2 absolute bg-red-600 z-40;
+                @apply w-8 h-8 top-1/2 right-3 -translate-y-1/2 absolute z-40 text-gray-700;
                 content: "";
+                 font-family: "Font Awesome 5 Free";
+                content: '\f002';
+                font-weight: 700;
+                font-size: 1.5rem;
+
             }
 
 
