@@ -15,11 +15,11 @@
 }
 
 .searchBox{
-    @apply md:w-1/2 h-16 bottom-0 left-1/2 -translate-x-1/2 
-    absolute z-20 justify-between flex bg-gray-600 rounded-full px-10 items-center;
+    @apply md:w-1/2 w-11/12 md:h-14 h-20 bottom-0 left-1/2 -translate-x-1/2 
+    absolute z-20 justify-between flex md:flex-row flex-col bg-gray-600 rounded-full px-10 items-center;
 
     .search{
-        @apply w-1/2 relative;
+        @apply md:w-1/2 w-full relative my-2;
 
         
             &::before{
