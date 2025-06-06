@@ -1,5 +1,5 @@
 .categories{
-    @apply flex flex-col md:flex-row w-10/12 mx-auto md:p-[2%];
+    @apply flex flex-col md:flex-row w-full mx-auto relative divide-none;
 
     .catsMenu{
         @apply flex flex-col border md:w-1/5 h-1/2 m-[2%] rounded-2xl border-white text-white overflow-hidden items-center;
@@ -26,6 +26,6 @@
     }
 
     .catsCards{
-        @apply grid xl:grid-cols-3 md:grid-cols-2 gap-6 md:m-[2%];
+        @apply grid xl:grid-cols-3 md:grid-cols-2 gap-6 md:m-[2%] justify-items-center;
     }
 }
