@@ -26,6 +26,10 @@
     }
 
     .catsCards{
-        @apply grid xl:grid-cols-3 md:grid-cols-2 gap-6 md:m-[2%] justify-items-center;
+        @apply flex flex-wrap gap-6 md:m-[2%] justify-items-center;
+
+        article{
+            @apply w-72;
+        }
     }
 }

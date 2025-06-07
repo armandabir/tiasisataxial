@@ -33,7 +33,7 @@ export default function CatsContainer(){
                 
             </div>
 
-            <BlueWhiteBg className="absolute -z-10 -scale-y-[65%] top-1/4 -translate-y-1/5 left-1/2 -translate-x-1/2 w-full"/>
+            <BlueWhiteBg className="absolute -z-10 -scale-y-[65%] top-2/3 md:top-1/2 -translate-y-2/4 left-1/2 -translate-x-1/2 h-4/5 w-full"/>
         </section>
     )
 }
