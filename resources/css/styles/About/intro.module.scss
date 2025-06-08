@@ -1,3 +1,31 @@
 .Intro{
     @apply h-640 w-full relative;
+
+    .aboutContent{
+        @apply flex h-full w-10/12 left-1/2 -translate-x-1/2 absolute z-20 bg-red-50/25;
+
+        div{
+            @apply w-1/2;
+        }
+
+        .media{
+            .imgContainer {
+                @apply relative top-1/2 right-1/2 h-1/2 transform translate-x-1/2 -translate-y-1/2;
+                
+                img{
+                    @apply absolute
+                }
+
+            }
+        }
+
+        .content{
+            @apply relative h-5/6;      
+            .score{
+                @apply absolute w-48 h-48 bg-blue-600 bottom-0 left-0;
+            }
+
+        }
+    }
 }
+
