@@ -1,14 +1,15 @@
 .features{
-    @apply h-640;
+    @apply h-500;
     h2{
         @apply text-center font-iranSansBold text-3xl my-4 p-10;
     }
 
     .content{
-        @apply h-full p-4;
+        @apply p-4 flex justify-around items-center relative;
 
-        @apply  h-5/6 md:bg-[url("/assets/shopsection.png")] opacity-60
+        @apply  h-5/6 md:bg-[url("/assets/shopsection.png")] 
         bg-[url("/assets/shopsection.png")] bg-no-repeat bg-center bg-cover relative z-20  mb-[30%] md:m-0 ;
+        
     &::before{
         @apply absolute inset-0 h-4/5 bg-gradient-to-b from-mainBlue from-5% via-transparent via-50% z-10;
         content: "";
@@ -16,7 +17,22 @@
     &::after{
         @apply absolute inset-0 bg-gradient-to-t from-mainBlue from-5% via-transparent via-50% z-10;
         content: "";
-    }
+     }
+
+     .fade{
+        @apply w-full h-full absolute top-0 left-0 bg-mainBlue opacity-60;
+     }
+     .card{
+            @apply w-1/5 h-48 backdrop-blur-sm border-2 rounded-3xl text-center p-10;
+            box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.5);
+
+           div{
+                @apply w-14  h-14 mx-auto mb-4;
+                img{
+                    @apply object-cover;
+                }
+           }
+        }
     }
 
 }
