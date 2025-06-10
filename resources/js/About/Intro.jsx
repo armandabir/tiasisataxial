@@ -29,8 +29,9 @@ export default function Intro(){
                             <FontAwesomeIcon icon={faStar}/>
                             <FontAwesomeIcon icon={faStar}/>
                             <FontAwesomeIcon icon={faStar}/>
+                            <FontAwesomeIcon icon={faStar}/>
                         </div>
-                        <p>
+                        <p className="text-center">
                             میزان رضایت شما 
                         </p>
                     </div>
