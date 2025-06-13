@@ -1,4 +1,5 @@
 import Features from "../About/Features";
+import Goals from "../About/goals";
 import Intro from "../About/Intro";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -10,6 +11,7 @@ export default function About(){
         <Headers/>
         <Intro/>
         <Features/>
+        <Goals/>
         <Footer/>
         </>
     )
