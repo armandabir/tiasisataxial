@@ -1,0 +1,7 @@
+.productSlide{
+    @apply md:h-screen;
+
+    img{
+        @apply object-cover h-full w-full;
+    }
+}
