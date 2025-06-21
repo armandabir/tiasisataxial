@@ -1,22 +1,22 @@
+import { useState } from "react"
 import styles from "./../../css/styles/product/productSlide.module.scss"
+import TransitionSection from "./../components/TransitionSection"
+import Button from "./Button"
 export default function ProductSlide(){
+    const [img,setImage]=useState("/assets/product/product-img.jpg");
+
     return(
        <section className={styles.productSlide}>
-            <img src="/assets/product/product-img.jpg" alt="" />
+            <img src={img} alt=""/>
             <div className={styles.btContainer}>
-                 <button>
-                    <img src="/assets/product/product-img-5.jpg" alt="" />
-                </button>
-                  <button>
-                    <img src="/assets/product/product-img-5.jpg" alt="" />
-                </button>
-                  <button>
-                    <img src="/assets/product/product-img-5.jpg" alt="" />
-                </button>
-                  <button>
-                    <img src="/assets/product/product-img-5.jpg" alt="" />
-                </button>
+                 <Button setImg={()=>setImage("/assets/product/product-img.jpg")}/>
+                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
+                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
+                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
+                
             </div>
+
+          <TransitionSection className="z-40 bottom-0 h-28"/>            
        </section> 
     )
 }

@@ -1,0 +1,6 @@
+   button{
+            @apply border border-gray-500 h-1/5;
+            img{
+                @apply w-full h-full object-contain;
+            }
+        }

@@ -24,14 +24,14 @@ export default function Navbar(){
                 </ul>
             </li>
             <li className={`${styles.buttons} hidden md:block`}>
-                <div className="w-10/12 mx-auto text-center relative">
-                    <Button className="w-1/4 text-md bg-zinc-500 ml-2 relative">
+                <div className="w-10/12  mx-auto text-center relative">
+                    <Button className="w-1/4 h-3/5 text-md bg-zinc-500 ml-2 relative">
                         <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
                         <span className="absolute -bottom-2 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                             0
                         </span>
                     </Button>
-                    <Button className="w-3/4 bg-orange-400 xl:p-3 sm:text-xs">ورود / ثبت نام</Button>
+                    <Button className="w-3/4 h-3/5 bg-orange-400 xl:p-3 sm:text-xs">ورود / ثبت نام</Button>
                 </div>
             </li>
             <div className={styles.callBt}>
