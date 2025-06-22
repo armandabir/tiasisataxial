@@ -1,6 +1,6 @@
 import { useState } from "react"
-import styles from "./../../css/styles/product/productSlide.module.scss"
-import TransitionSection from "./../components/TransitionSection"
+import styles from "./../../../css/styles/product/productSlide.module.scss"
+import TransitionSection from "../TransitionSection"
 import Button from "./Button"
 export default function ProductSlide(){
     const [img,setImage]=useState("/assets/product/product-img.jpg");

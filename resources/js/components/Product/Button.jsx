@@ -1,4 +1,4 @@
-import styles from "./../../css/styles/product/button.module.scss"
+import styles from "./../../../css/styles/product/button.module.scss"
 export default function Button({img,setImg}){
     return (
         <button onClick={setImg}>
