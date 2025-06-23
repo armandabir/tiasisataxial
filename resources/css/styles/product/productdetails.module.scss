@@ -1,0 +1,22 @@
+.ProductDetails{
+    .detailBox{
+        @apply flex w-4/5 h-500 mx-auto;
+
+        >div{
+            @apply w-1/2
+        }
+
+        .imgContainer{
+            @apply w-4/5 h-full mx-auto;
+            img{
+                @apply w-full h-full rounded-3xl object-contain;
+            }
+        }
+
+        .productProp{
+            @apply w-4/5 h-14 p-3 my-4 bg-blue-900 flex rounded-lg;
+        }
+    }
+
+ 
+}
