@@ -1,18 +1,19 @@
 .productDesk{
-    @apply h-500 relative;
+    @apply md:h-500 h-900 relative;
 
     h1{
-        @apply text-center mt-6 text-2xl;
+        @apply md:text-center mt-6 mr-5 text-2xl;
     }
 
-    .general{
-        @apply absolute ;
-        .title{
-             @apply text-xl mr-20 my-8 relative;
+     .title{
+             @apply text-xl mr-5 my-8 md:text-center;
         }
 
+    .general{
+        @apply relative top-14 md:h-96 h-full;
+       
         p{
-            @apply text-justify text-black p-10;
+            @apply text-justify absolute md:mt-[5%] text-black p-10;
         }
     }
 }

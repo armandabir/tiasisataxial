@@ -13,9 +13,22 @@
             }
         }
 
-        .productProp{
-            @apply w-4/5 h-14 p-3 my-4 bg-blue-900 flex rounded-lg;
+
+        .details{
+            
+            h2,p{
+                @apply mb-10;
+            }
+
+            h2{
+                @apply text-2xl font-iranSansBold;
+            }
+            .productProp{
+                @apply w-4/5 h-14 p-3 my-4 bg-blue-900 flex rounded-lg;
+            }
         }
+        
+        
     }
 
  
