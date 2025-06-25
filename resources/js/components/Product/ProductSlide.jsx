@@ -16,7 +16,7 @@ export default function ProductSlide(){
                 
             </div>
 
-          <TransitionSection className="z-40 bottom-0 h-28"/>            
+          <TransitionSection className="z-40 bottom-0 md:h-28 h-10"/>            
        </section> 
     )
 }

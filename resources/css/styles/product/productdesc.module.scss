@@ -10,7 +10,7 @@
         }
 
     .general{
-        @apply relative top-14 md:h-96 h-full;
+        @apply relative md:top-0 top-14 md:h-96 h-full;
        
         p{
             @apply text-justify absolute md:mt-[5%] text-black p-10;
