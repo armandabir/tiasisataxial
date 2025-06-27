@@ -1,0 +1,11 @@
+.card{
+    @apply flex md:flex-row flex-col gap-2;
+
+    button{
+        @apply w-1/6 h-12 text-center mr-[80%];
+    }
+}
+
+.order{
+      @apply order-last;
+}

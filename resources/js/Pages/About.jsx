@@ -8,7 +8,7 @@ export default function About(){
     return (
         <>
         <Navbar/>
-        <Headers/>
+        <Headers img="./assets/1.jpg"/>
         <Intro/>
         <Features/>
         <Goals/>

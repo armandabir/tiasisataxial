@@ -1,17 +1,17 @@
 import styles from "./../css/styles/Headers.module.scss"
 import TransitionSection from "./components/TransitionSection"
-export default function Headers () {
+export default function Headers ({img,dark,title = ""}) {
     return (
-        <header className={styles.Header}>
+        <header className={`${styles.Header} ${dark ? styles.dark:""  }` }>
              <div className={styles.content}>
                 <h3>دسته بندی</h3>
                 <ul>
                     <li>خانه . </li>
-                    <li>دسته بندی</li>
+                    <li>{title}</li>
                 </ul>  
              </div>
              <div className={styles.imgContainer}>
-                 <img src="./assets/1.jpg" alt="" />
+                 <img src={img} alt="" />
              </div>
             <TransitionSection className="h-20 bottom-0"/>
         </header>
