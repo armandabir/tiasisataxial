@@ -4,8 +4,30 @@
     button{
         @apply w-1/6 h-12 text-center mr-[80%];
     }
+
+    .imgContainer{
+        @apply p-5;
+        img{
+            @apply rounded-xl;
+        }
+    }
 }
 
+.bg1{
+    @apply bg-[url("./../../../assets/services/rectangle1.jpg")] object-center bg-cover bg-no-repeat;
+}
+
+.bg2{
+    @apply bg-[url("./../../../assets/services/rectangle2.jpg")] object-center bg-cover bg-no-repeat;
+}
+
+.bg3{
+    @apply bg-[url("./../../../assets/services/rectangle3.jpg")] object-center bg-cover bg-no-repeat;
+}
+
+.bg4{
+    @apply bg-[url("./../../../assets/services/rectangle4.jpg")] object-center bg-cover bg-no-repeat;
+}
 .order{
       @apply order-last;
 }
