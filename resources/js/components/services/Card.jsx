@@ -10,16 +10,18 @@ export default function Card ({title,desc,tags,img,index}){
             <div className={`${styles.imgContainer} ${index % 2 == 0 ? styles.order :""}`}>
                 <img src={img} alt="" />
             </div>
-            <div>
+            <div className={styles.content}>
                 {
                     tags.map((tag)=><span>{tag.title}</span>)
                 }
                 
-                <h2>{title}</h2>
-                <p>
-                    {desc}
-                </p>
-                <button>جزییات بیشتر</button>
+                <div className={styles.container}>
+                    <h2>{title}</h2>
+                    <p>
+                        {desc}
+                    </p>
+                    <button>جزییات بیشتر</button>
+                </div>
             </div>
         </div>
     )
