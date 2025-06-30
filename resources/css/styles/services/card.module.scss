@@ -1,5 +1,5 @@
 .card{
-    @apply flex md:flex-row flex-col gap-2 rounded-2xl relative overflow-hidden p-5 md:h-500;
+    @apply flex md:flex-row flex-col gap-2 rounded-2xl relative overflow-hidden p-5 md:h-500 ;
 
     &::before {
         @apply absolute w-full h-full top-0 left-0 bg-black/80 -z-0;
@@ -13,14 +13,14 @@
 
 
     .imgContainer{
-        @apply w-1/2;
+        @apply md:w-1/2 w-full;
         img{
             @apply rounded-xl w-full h-full object-cover;
         }
     }
 
     .content{
-        @apply w-1/2 p-5 ;
+        @apply md:w-1/2 w-full p-5 ;
 
         span{
             @apply px-4 py-2 ml-3 border rounded-full 
@@ -37,7 +37,7 @@
         }
 
         button{
-            @apply w-1/4 h-12 text-center mt-auto mr-auto bg-orange-400;
+            @apply md:w-1/4 w-4/5 h-12 text-center mt-auto md:mr-auto mx-auto bg-orange-400;
         }
        }
     }
