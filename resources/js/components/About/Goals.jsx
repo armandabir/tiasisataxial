@@ -1,5 +1,5 @@
-import styles from "./../../css/styles/About/goals.module.scss"
-import { BlueWhiteBg } from "../components/BlueWhiteBg";
+import styles from "./../../../css/styles/About/goals.module.scss"
+import { BlueWhiteBg } from "./../../components/BlueWhiteBg";
 
 export default function Goals (){
     return (

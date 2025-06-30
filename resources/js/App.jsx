@@ -5,6 +5,7 @@ import Categories from './Pages/categories';
 import About from './Pages/About';
 import Product from './Pages/Product';
 import Services from './Pages/Services';
+import CardPage from './Pages/CartPage';
 
 
 
@@ -17,7 +18,7 @@ export default function App(){
                 <Route path='/about' element={<About/>}/>
                 <Route path='/product' element={<Product/>}/>
                 <Route path='/services' element={<Services/>}/>
-                <Route path='/cart' element={<CartPage/>}/>
+                <Route path='/cart' element={<CardPage/>}/>
             </Routes>
        </BrowserRouter>
     )

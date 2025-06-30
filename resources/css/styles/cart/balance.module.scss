@@ -1,0 +1,10 @@
+.balance{
+    @apply flex flex-col p-5;
+
+    .balanceNav{
+        @apply bg-gray-500 flex;
+        li{
+            @apply w-1/4 text-center;
+        }
+    }
+}
