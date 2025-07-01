@@ -28,8 +28,10 @@ export default function Cards (){
                     services.map((service,index)=><Card index={index} title={service.title} desc={service.desc} img={service.img} tags={service.tags}/>)
                 }
             </div>
-            <BlueWhiteBg className="w-full -scale-x-100 scale-y-75 absolute"/>
-            <BlueWhiteBg className="w-full bottom-0 scale-y-75 absolute"/>
+            <div className="h-full w-full absolute flex flex-col left-1/2 -translate-x-1/2">
+                <BlueWhiteBg className="w-full -scale-x-100 scale-y-75"/>
+                <BlueWhiteBg className="w-full scale-y-75"/>
+            </div>
         </section>
     )
 }
