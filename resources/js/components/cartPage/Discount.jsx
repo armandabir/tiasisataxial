@@ -4,10 +4,12 @@ export default function Discount(){
     return (
         <div className={style.discount}>
             <h2>کوپن تخفیف</h2>
-            <div className={style.container}>
-                <input type="text" />
-                <Button className="bg-orange-400">اعمال تخفیف</Button>
-            </div>
+            <form action="">
+                <div className={style.container}>
+                    <input type="text" />
+                    <Button className="bg-orange-400">اعمال تخفیف</Button>
+                </div>
+            </form>
         </div>
 
     )

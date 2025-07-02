@@ -1,5 +1,5 @@
 .discount{
-    @apply p-5;
+    @apply p-5 border border-white rounded-2xl;
 
     .container{
         @apply flex md:flex-row flex-col gap-x-6 p-6;

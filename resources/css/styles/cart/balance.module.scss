@@ -1,5 +1,5 @@
 .balance{
-    @apply flex flex-col p-5;
+    @apply flex flex-col p-5 border border-white rounded-2xl my-5 ;
 
     .balanceNav{
         @apply bg-gray-500 flex rounded-lg p-4  ;
@@ -10,6 +10,7 @@
 
 
     .balanceInfo{
+    
         li{
             @apply p-4;
         }

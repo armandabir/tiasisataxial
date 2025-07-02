@@ -1,0 +1,21 @@
+.personInfo{
+    @apply p-5 border border-white rounded-2xl my-5;
+    
+    .formInfo{
+        
+        >div{
+            @apply flex gap-5;
+            div{
+                @apply w-1/2;
+                
+                input {
+                    @apply w-full my-5 rounded-md;
+                }
+            } 
+        }
+
+        textarea{
+            @apply w-full;
+        }
+    }
+}

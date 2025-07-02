@@ -1,9 +1,5 @@
 .cart{
     @apply flex md:flex-row flex-col h-1600 md:p-20 gap-3 w-11/12 mx-auto;
-
-    >div{
-        @apply border border-white rounded-2xl;
-    }
     .shopCart{
         @apply md:w-4/5;
     }
