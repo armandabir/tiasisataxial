@@ -5,11 +5,11 @@
         @apply flex md:flex-row flex-col gap-x-6 p-6;
 
         input{
-            @apply w-3/4 rounded-lg;
+            @apply md:w-3/4 rounded-lg h-10 self-center w-full;
         }
 
         button {
-            @apply w-1/4;
+            @apply md:w-1/4 w-1/2 mx-auto my-3;
         }
     }
 }

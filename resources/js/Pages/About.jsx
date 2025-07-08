@@ -8,7 +8,7 @@ export default function About(){
     return (
         <>
         <Navbar/>
-        <Headers img="./assets/1.jpg"/>
+        <Headers img="/assets/1.jpg" title="درباره ما"/>
         <Intro/>
         <Features/>
         <Goals/>

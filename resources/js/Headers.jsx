@@ -4,7 +4,7 @@ export default function Headers ({img,dark,title = ""}) {
     return (
         <header className={`${styles.Header} ${dark ? styles.dark:""  }` }>
              <div className={styles.content}>
-                <h3>دسته بندی</h3>
+                <h3>{title}</h3>
                 <ul>
                     <li>خانه . </li>
                     <li>{title}</li>

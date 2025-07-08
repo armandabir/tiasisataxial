@@ -4,18 +4,19 @@
     .formInfo{
         
         >div{
-            @apply flex gap-5;
+            @apply flex gap-5 flex-col;
+
             div{
-                @apply w-1/2;
+                @apply flex md:flex-nowrap flex-wrap;
                 
                 input {
-                    @apply w-full my-5 rounded-md;
+                    @apply md:w-1/2 w-full mx-2 my-5 p-2 rounded-md;
                 }
             } 
         }
 
         textarea{
-            @apply w-full;
+            @apply w-full rounded-xl p-2;
         }
     }
 }

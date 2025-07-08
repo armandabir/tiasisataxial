@@ -7,7 +7,7 @@ export default function Services (){
     return (
         <>
             <Navbar/>
-            <Headers img="./assets/services.jpg" title="خدمات" dark/>
+            <Headers img="/assets/services.jpg" title="خدمات" dark/>
             <Cards/>
             <Footer/>
         </>

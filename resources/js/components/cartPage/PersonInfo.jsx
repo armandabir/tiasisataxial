@@ -6,17 +6,19 @@ export default function personInfo(){
             <form action="" className={styles.formInfo}>
                 <div>
                     <div>
-                        <input type="text" />
-                        <input type="text" />
-                        <input type="text" />
+                        <input type="text" placeholder="نام" />
+                        <input type="text" placeholder="نام خانوادگی"/>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="استان" />
+                        <input type="text" placeholder=" شهر"/>
                     </div> 
                     <div>
-                        <input type="text" />
-                        <input type="text" />
-                        <input type="text" />
+                        <input type="text" placeholder="پلاک" />
+                        <input type="text" placeholder="تلفن تماس"/>
                     </div>
                 </div>
-                <textarea name="description" id=""></textarea>
+                <textarea name="description" placeholder="آدرس دقیق" id="" rows="10"></textarea>
             </form>
        </div>
     )

@@ -7,7 +7,7 @@ export default function Cards (){
         {
             title:"کارت1",
             desc:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است،",
-            img:"./assets/services/s1.jpg",
+            img:"/assets/services/s1.jpg",
             tags : [{title : "هشتک1"},{title:"هشتگ 2"}]
             
         },
@@ -15,7 +15,7 @@ export default function Cards (){
            {
             title:"کارت1",
             desc:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است،",
-            img:"./assets/services/s1.jpg",
+            img:"/assets/services/s1.jpg",
             tags : [{title : "هشتک1"},{title:"هشتگ 2"}]
             
         },
