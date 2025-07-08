@@ -6,6 +6,7 @@ import About from './Pages/About';
 import Product from './Pages/Product';
 import Services from './Pages/Services';
 import CardPage from './Pages/CartPage';
+import Projects from './Pages/Projects';
 
 
 
@@ -18,6 +19,7 @@ export default function App(){
                 <Route path='/about' element={<About/>}/>
                 <Route path='/product' element={<Product/>}/>
                 <Route path='/services' element={<Services/>}/>
+                <Route path='/projects' element={<Projects/>}/>
                 <Route path='/cart' element={<CardPage/>}/>
             </Routes>
        </BrowserRouter>
