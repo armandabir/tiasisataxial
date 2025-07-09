@@ -18,7 +18,8 @@ module.exports = {
        },
 
       minHeight:{
-        'h640':'640px'
+        'h640':'640px',
+        'h-1600':'1600px'
       },
 
       height:{
