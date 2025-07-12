@@ -1,5 +1,5 @@
 .Footer{
-    @apply md:h-500 bg-[url("./../../assets/footbgMobile.jpg")] md:bg-[url("./../../assets/footbg.jpg")] bg-cover md:bg-contain xl:bg-cover bg-no-repeat md:p-10;
+    @apply bg-[url("./../../assets/footbgMobile.jpg")] md:bg-[url("./../../assets/footbg.jpg")] bg-cover md:bg-contain xl:bg-cover bg-no-repeat md:p-10;
      div {
         @apply  p-5;
     }

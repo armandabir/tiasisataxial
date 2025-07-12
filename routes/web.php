@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/{any}', function () {
-    return view('index');
+Route::get('/product', function () {
+    $arman="test";
+    $names=['ali','rahmat','ziba'];
+    $result=[
+        'r1'=>$names,
+        'r2'=>$arman
+    ];
+
+    return view('index',['result'=>json_encode($result)]);
 });

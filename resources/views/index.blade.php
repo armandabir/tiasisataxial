@@ -14,6 +14,6 @@
         
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app" data-page="{{$result}}"></div>
     </body>
 </html>

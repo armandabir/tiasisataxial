@@ -8,7 +8,7 @@ export default function Projects(){
     return(
         <>
         <Navbar/>
-        <Headers title="انرژهای تجدید پذیر" img="/assets/projects/recycle.jpg" dark/>
+        <Headers title="انرژی های تجدید پذیر" img="/assets/projects/recycle.jpg" dark/>
         <ProjectMain/>
         <Footer/>
         </>
