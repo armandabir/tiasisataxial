@@ -14,6 +14,6 @@
         
     </head>
     <body>
-        <div id="app" data-page="{{$result}}"></div>
+        <div id="app" data-page="@isset($result){{$result}}@else null @endisset"></div>
     </body>
 </html>

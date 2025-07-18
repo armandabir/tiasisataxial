@@ -1,6 +1,17 @@
 import styles from "./../../../css/styles/cart/balance.module.scss"
 import delImg from "./../../../assets/cart/XCircle.png"
-export default function Balance(){
+import { useContext } from "react"
+import CartContext from "../store/CartContext"
+export default function Balance({items}){
+    const {addItem,removeItem}=useContext(CartContext)
+
+       function HandleAddtoCart(item){
+        addItem(item)
+        }
+
+        function HandleRemoveCart(item){
+            removeItem(item)
+        }
     return (
         <div className={styles.balance}>
             <h2>موجودی سبد خرید</h2>
@@ -11,39 +22,27 @@ export default function Balance(){
                 <li>حذف</li>
             </ul>
             <ul className={styles.balanceInfo}>
-                <li>
-                    <ul>
-                        <li>پکیج شماره 1</li>
-                        <li>2000000 تومان</li>
-                        <li>
-                            <div className={styles.inputWrapper}>
-                                <span className={styles.minus}>-</span>
-                                <input type="number" value="10" readOnly />
-                                <span className={styles.plus}>+</span>
-                            </div>
-                        </li>
-                        <li>
-                            <img src={delImg} alt="" />
-                        </li>
-                    </ul>
-                </li>
+                {
 
-                <li>
-                    <ul>
-                        <li>پکیج شماره 1</li>
-                        <li>2000000 تومان</li>
-                        <li>
-                            <div className={styles.inputWrapper}>
-                                <span className={styles.minus}>-</span>
-                                <input type="number" value="10" readOnly />
-                                <span className={styles.plus}>+</span>
-                            </div>
+                     items.map((item)=>
+                        <li key={item.id}>
+                            <ul>
+                                <li>{item.name}</li>
+                                <li>{item.price} تومان</li>
+                                <li>
+                                    <div className={styles.inputWrapper}>
+                                        <span onClick={()=>HandleRemoveCart(item)} className={styles.minus}>-</span>
+                                        <input type="number" value={item.qty} readOnly />
+                                        <span onClick={()=>HandleAddtoCart(item)} className={styles.plus}>+</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src={delImg} alt="" />
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <img src={delImg} alt="" />
-                        </li>
-                    </ul>
-                </li>
+                    )
+                }
             </ul>
         </div>
     )

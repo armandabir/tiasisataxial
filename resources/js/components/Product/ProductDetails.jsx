@@ -1,5 +1,4 @@
 import styles from "./../../../css/styles/product/productdetails.module.scss"
-import Button from "./../Button"
 import checkmark from "./../../../assets/checkmark.png"
 export default function ProductDetails(){
     return (
@@ -45,7 +44,7 @@ export default function ProductDetails(){
 
        </p>
 
-       <Button className="bg-orange-400 md:w-1/4 w-4/5 md:mx-[38%] mx-[10%]">خرید محصول</Button>
+     
     </section>
     )
 }
