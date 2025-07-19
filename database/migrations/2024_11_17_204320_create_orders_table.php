@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer("count");
             $table->integer("price");
+            $table->foreignId("user_id")->references("id")->on('users')->onDelete('cascade');
             $table->string("referenceId",1000);
             $table->string("status",255);
             $table->timestamps();

@@ -17,6 +17,10 @@ export default function Navbar(){
     },0)
 
     console.log(items)
+
+    function handleLoginBt(){
+        window.location.href = "/admin/dashboard";
+    }
     return ( 
         <nav className={styles.navbar}>
             <li className="hidden md:block">
@@ -51,7 +55,7 @@ export default function Navbar(){
                             </span>
                         </Button>
                     </Link>
-                    <Button className="w-3/4 h-3/5 bg-orange-400 xl:p-3 sm:text-xs">ورود / ثبت نام</Button>
+                    <Button className="w-3/4 h-3/5 bg-orange-400 xl:p-3 sm:text-xs" onclick={handleLoginBt}>ورود / ثبت نام</Button>
                 </div>
             </li>
             <div className={styles.callBt}>

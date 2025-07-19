@@ -2,23 +2,21 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 export default defineConfig({
-    build: {
-    outDir: 'public/build',
-    // ...
-  },
     plugins: [
         laravel({
-            input: ['resources/css/index.css', 'resources/js/index.jsx'],
+            input: [
+                'resources/css/index.css', 
+                'resources/js/index.jsx',
+                'resources/sass/app.scss',
+                'resources/js/app.js',
+            ],
             refresh: true,
         }),
-       
-        
 
-        
-      react(),
+            react(),
     ],
 
-    server: {
+      server: {
         host: '0.0.0.0', // Use localhost or your machine's IP address
         port: 5173, // Ensure the port matches your setup
         hmr: {
