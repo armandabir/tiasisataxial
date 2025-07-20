@@ -57,13 +57,17 @@ class categoriesController extends Controller
             $cats_table->parent_id=0;
         }else{
             $cats_table->parent_id=$request->cat_id;
+        }
+        
+
+        if($request->hasFile('cat_pic')){
             $pic=$request->file("cat_pic");
             $filename=$pic->getClientOriginalName();
             $filename=rand(0,1000).$filename;
             $upload=$pic->storeAs("public/subcats",$filename);
             $cats_table->pic=$filename;
         }
-
+        
         $cats_table->name=$request->cat_name;
         $cats_table->maincat_id=$request->maincat_id;
         $cats_table->description=$request->description;

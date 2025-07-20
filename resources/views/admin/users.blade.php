@@ -21,7 +21,7 @@
                                 <th scope="col">نام</th>
                                 <th scope="col">نام کاربری</th>
                                 <th scope="col">سطح دسترسی</th>
-                                <th scope="col">تعداد گزارش</th>
+                                <th scope="col">تلفن</th>
                                 <th scope="col">عملیات</th>
                             </tr>
                         </thead>
@@ -32,21 +32,17 @@
                                     @csrf
                                     <td scope="row">{{$key}}</td>
                                     <td>{{$user->firstName}} {{$user->lastName}}</td>
-                                    <td>{{$user->meli_code}}</td>
+                                    <td>{{$user->username}}</td>
                                     <td class="w-25">
                                         <div class="form-check-inline">
                                          
                                             <input type="radio" class="form-check-input ml-2" name="access" value="1" id="adminRadio" {{($user->role_as==1)?'checked':''}}>
                                             <label for="adminRadio" class="form-label ml-2">ادمین</label>
-                                            <input type="radio" class="form-check-input ml-2"  value="2" name="access" id="metronRadio"{{($user->role_as==2)?'checked':''}}>
-                                            <label for="metronRadio" class="form-label ml-2">مترون</label>
-                                            <input type="radio" class="form-check-input ml-2" value="3" name="access" id="supervRadio" {{($user->role_as==3)?'checked':''}}>
-                                            <label for="supervRadio" class="form-label ml-2">سوپروایزر</label>
                                             <input type="radio" class="form-check-input ml-2" value="4" name="access" id="guestRadio" {{($user->role_as==4)?'checked':''}}>
                                             <label for="guestRadio" class="form-label ml-2">کاربر</label>
                                         </div>
                                     </td>
-                                    <td class="text-center">{{count($user->reports)}}</td>
+                                    <td class="text-center">{{$user->phone_number}}</td>
                                     <td>
                                         <div>   
                                             <button type="submit" class="btn btn-primary " name="action" value="role" >ثبت</button>

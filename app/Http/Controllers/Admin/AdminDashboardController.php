@@ -92,27 +92,30 @@ class AdminDashboardController extends Controller
         $this->validate($request,[
             "firstName"=>"required|string|min:3",
             "lastName"=>"required|string|min:3",
-            "meli_code"=>"digits:10|unique:users",
-            // "phoneNumber"=>"required",
-            // "email"=>'required|string|email|unique:users',
+            "username"=>"required|string|min:3|unique:users",
+            "phoneNumber"=>"required|unique:users,phone_number",
+            "email"=>'email|unique:users',
             "password"=>'required|min:8|confirmed',
-            "event_place"=>'required|min:1',
+            // "event_place"=>'required|min:1',
         
         ],[
             'firstName.required'=>"این فیلد الزامی است",
             'firstName.min'=>"حداقل 3 کاراکتر",
             'lastName.required'=>"این فیلد الزامی است",
             'lastName.min'=>"حداقل 3 کاراکتر",
-            'meli_code.required'=>"این فیلد الزامی است",
-            'meli_code.digits'=>"کد ملی 10 کاراکتر",
-            'meli_code.unique'=>"این کد ملی قبلا ثبت شده است!",
-            'email.required'=>"این فیلد الزامی است",
+            'username.required'=>"این فیلد الزامی است",
+            'username.min'=>"کد ملی 3 کاراکتر",
+            'username.unique'=>"نام کاربری قبلا ثبت شده است!",
+            // 'email.required'=>"این فیلد الزامی است",
+            'phoneNumber.required'=>"این فیلد الزامی است",
+            'phoneNumber.unique'=>"تلفن قبلا ثبت شده است!",
+
             'email.email'=>"ایمیل درست نیست",
             'email.unique'=>"این ایمیل قبلا ثبت شده است!",
             'password.required'=>"این فیلد الزامی است",
             'password.min'=>"حداقل 8 کاراکتر",
             'password.confirmed'=>"رمز عبور و تکرار رمز یکسان نیست!",
-            'event_place.required'=>"این فیلد الزامی است"
+            // 'event_place.required'=>"این فیلد الزامی است"
            
 
         ]);
@@ -120,6 +123,7 @@ class AdminDashboardController extends Controller
 
         $firstName=$request->old('firstName');
         $lastName=$request->old('lastName');
+        $username=$request->old('username');
         $phoneNumber=$request->old('phoneNumber');
         $email=$request->old('email');
         
@@ -127,12 +131,12 @@ class AdminDashboardController extends Controller
         $user=new User;
         $user->firstName=$request->firstName;
         $user->lastName=$request->lastName;
-        $user->meli_code=$request->meli_code;
+        // $user->meli_code=$request->meli_code;
         $user->phone_number=$request->phoneNumber;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
         $user->gender=$request->gender;
-        $user->place_id=$request->event_place;
+        $user->username=$request->username;
         $user->role_as=4;
         $query=$user->save();
 

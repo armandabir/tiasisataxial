@@ -50,11 +50,11 @@
 
                         <div class="form-row">
                             <div class="form-group col">
-                                <label class="font-weight-bold text-dark text-2">کد ملی</label>
+                                <label class="font-weight-bold text-dark text-2">نام کاربری</label>
                                 <span class="asterisk">*</span>
-                                <input type="text" name="meli_code" value="{{old('meli_code')}}" class="  form-control form-control-lg text-right  form-control @error('meli_code') is-invalid @enderror" dir="ltr">
+                                <input type="text" name="username" value="{{old('username')}}" class="  form-control form-control-lg text-right  form-control @error('username') is-invalid @enderror" dir="ltr">
 
-                                @error('meli_code')
+                            @error('username')
                                 <span class="invalid-feedback">
                                     <strong>{{$message}}</strong>
                                 </span>
@@ -62,6 +62,7 @@
                             </div>
 
                         </div>
+                       
                         
                         
 
@@ -85,7 +86,7 @@
                             </div>
                         </div>
 
-                        <div class="from-row">
+                       {{-- <div class="from-row">
                             <div class="form-group col-md-12 mx-auto" >
                                 <label for="event_place">بخش</label>
                                 <span class="asterisk">*</span>
@@ -103,7 +104,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div>--}}
                                         
                         
                         <div class="form-row">
@@ -144,11 +145,19 @@
                        <div class="form-row">
                              <div class="form-group col">
                                  <label class="font-weight-bold text-dark text-2">شماره تلفن</label>
-
-                                 <input type="text" name="phoneNumber" class="form-control text-right " value="{{old('phoneNumber')}}">
+                                  <span class="asterisk">*</span>
+                                 <input type="text" name="phoneNumber" class="form-control text-right @error('phoneNumber') is-invalid @enderror " value="{{old('phoneNumber')}}" >
+                            @error('phoneNumber')
+                                <span class="invalid-feedback">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror       
+                            
                             </div>
-                       </div>
 
+                      
+                       </div>
+ 
 
                   
                         

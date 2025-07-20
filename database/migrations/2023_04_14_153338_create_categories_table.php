@@ -15,12 +15,12 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('parent_id',10);
+            $table->unsignedBigInteger('parent_id');
             $table->string('name',255);
-            $table->string("pic",255);
+            $table->string("pic",255)->nullable();
             $table->text("description",10000);
             $table->unsignedBigInteger('maincat_id');
-            $table->foreign('maincat_id')->references('id')->on('maincats')->onDelete('cascade');
+            // $table->foreignId('maincat_id')->references('id')->on('maincats')->onDelete('cascade');
             $table->timestamps();
         });
     }
