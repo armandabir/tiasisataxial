@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('parent_id');
             $table->string('name',255);
             $table->string("pic",255)->nullable();
-            $table->text("description",10000);
+            $table->text("description",10000)->nullable();
             $table->unsignedBigInteger('maincat_id');
             // $table->foreignId('maincat_id')->references('id')->on('maincats')->onDelete('cascade');
             $table->timestamps();

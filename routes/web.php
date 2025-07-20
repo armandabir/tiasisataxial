@@ -88,6 +88,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     route::get("product/create",[productController::class,"create"])->name("product.create");
     route::post("product/store",[productController::class,"store"])->name("product.store");
+    route::get('product/edit',[productController::class,"edit"])->name("product.edit");
+    route::get('product/show/{product}',[productController::class,"show"])->name("product.show");
+    route::get('product/publish/{product}',[productController::class,"publish"])->name("product.publish");
+    route::post("product/update/{product}",[productController::class,"update"])->name("product.update");
+    route::post("product/delete/{product}",[productController::class,"destroy"])->name("product.delete");
 
 
     route::get("orders",[AdminDashboardController::class,'orders'])->name("orders");

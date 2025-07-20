@@ -93,6 +93,7 @@ class productController extends Controller
       }
     
     }
+    
 
     /**
      * Display the specified resource.
@@ -100,7 +101,7 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(product $product)
     {
         //
     }
@@ -111,11 +112,30 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $products=product::all();
+        return view("admin.products",compact(['products']));
     }
 
+
+    public function publish(product $product){
+        if($product->publish==0){
+            $update_items=['publish'=>1];
+            $message="محصول با موفقیت منشر شد";
+        }else{
+            $update_items=['publish'=>0];
+            $message="انشار لغو شد";
+        }
+
+        if($product->update($update_items)){
+            Alert::message("success",$message,"success")->show();
+            return back();
+        }else{
+            Alert::message("error","عملیات شکست خورد","error")->show();
+            return back();
+        }
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -134,7 +154,7 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(product $product)
     {
         //
     }

@@ -110,6 +110,13 @@
                   </a>
                 </li>
 
+                  <li class="nav-item">
+                  <a href="{{route('product.edit')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>محصولات من</p>
+                  </a>
+                </li>
+
                 
                @endcanany
               </ul>
