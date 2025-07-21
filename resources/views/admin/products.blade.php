@@ -8,6 +8,21 @@ use App\Self\Helper;
 @section('page','محصولات من')
 
 @section('content')
+
+    <style>
+        .img-container{
+            width: 200px;
+            height: 200px;
+
+        }
+
+        .img-container img{
+            width: 100%;
+            height:100%
+            object-fit:contain;
+        }
+
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -16,6 +31,7 @@ use App\Self\Helper;
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">عنوان</th>
+                            <th scope="col">عکس</th>
                             <th scope="col">متن</th>
                             <th scope="col">عملیات</th>
 
@@ -23,9 +39,20 @@ use App\Self\Helper;
                     </thead>
                     <tbody>
                         @foreach($products as $key=>$product)
+                           @php
+                             $pic=json_decode($product->pic)[0]
+                           @endphp
                         <tr>
                             <th>{{++$key}}</th>
                             <td>{{$product->name}}</td>
+                            <td>
+                                <div class="img-container">
+          
+                                        <img src='{{asset("storage/products/$pic")}}' alt="">
+                        
+
+                                </div>
+                            </td>
                             <td>{{Helper::setText($product->content)->remove_tags()->remove_img()->character_limiter(500)}}</td>
                             <td>
                                 <a href="{{route('product.show',$product->slug)}}" class="btn btn-warning w-100">ویرایش</a>

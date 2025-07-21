@@ -103,7 +103,11 @@ class productController extends Controller
      */
     public function show(product $product)
     {
-        //
+        $allcats = new category;
+        $cats=$allcats->getcats(0);
+        $tags=$product->tags()->get();
+        $productcat=$product->subcat()->first();
+        return view("admin.product",compact(['product','cats','tags','productcat']));
     }
 
     /**
@@ -143,9 +147,33 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, product $product)
     {
-        //
+                $this->validate($request,['title'=>"required|min:3","content"=>"required|min:10","price"=>"required|numeric|min:4"],
+        ['title.required'=>"این فیلد اجباری است",
+        'title.min'=>"حداقل 3 کاراکتر",
+        'content.required'=>'متن اجباری است',
+        'content.min'=>"حداقل 10 کاراکتر",
+        'price.required'=>'این فیلد اجباری است',
+        'price.numeric'=>"مقدار، عددی باشد",
+        'price.min'=>"حداقدل 4 رقم باشد"
+            ]
+        );
+
+        if($request->hasFile('pic')){
+              $this->validate($request,["pic.*"=>"required|mimes:jpg,jpeg,png,tif"],[
+                'pic.*.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
+            ]);
+
+           foreach ($request->file('pic') as $key=>$pic){
+                dd($key);
+           }
+        }
+
+        
+        $slug=Helper::sluggableCustomSlugMethod($request->title);
+
+
     }
 
     /**
