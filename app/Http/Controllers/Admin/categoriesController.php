@@ -103,6 +103,22 @@ class categoriesController extends Controller
         //
     }
 
+
+    public function getcats($maincat){
+
+        $cats=[];
+
+        if($maincat==2){
+            $productcat = new category();
+            // $cats=$productcat->getcats(0);
+            $cats=$productcat->where('maincat_id',$maincat)->where('parent_id',"!=","0")->get();
+        }else{
+             $cats=category::where('maincat_id',$maincat)->get();
+        }
+
+        return response()->json($cats);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

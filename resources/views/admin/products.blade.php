@@ -18,7 +18,7 @@ use App\Self\Helper;
 
         .img-container img{
             width: 100%;
-            height:100%
+            height:100%;
             object-fit:contain;
         }
 
@@ -47,10 +47,7 @@ use App\Self\Helper;
                             <td>{{$product->name}}</td>
                             <td>
                                 <div class="img-container">
-          
-                                        <img src='{{asset("storage/products/$pic")}}' alt="">
-                        
-
+                                    <img src='{{asset("storage/products/$pic")}}' alt="">
                                 </div>
                             </td>
                             <td>{{Helper::setText($product->content)->remove_tags()->remove_img()->character_limiter(500)}}</td>

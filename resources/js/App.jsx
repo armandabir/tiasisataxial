@@ -17,7 +17,7 @@ export default function App(){
             <CartContextProvider>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/cats' element={<Categories/>}/>
+                    <Route path='/cats/:cat/' element={<Categories/>}/>
                     <Route path='/about' element={<About/>}/>
                     <Route path='/product/:id' element={<Product/>}/>
                     <Route path='/services' element={<Services/>}/>

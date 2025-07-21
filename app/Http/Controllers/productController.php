@@ -159,20 +159,47 @@ class productController extends Controller
         'price.min'=>"حداقدل 4 رقم باشد"
             ]
         );
-
+        
         if($request->hasFile('pic')){
-              $this->validate($request,["pic.*"=>"required|mimes:jpg,jpeg,png,tif"],[
+            $this->validate($request,["pic.*"=>"required|mimes:jpg,jpeg,png,tif"],[
                 'pic.*.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
             ]);
+            
+            
+            $update_items=[]; 
 
-           foreach ($request->file('pic') as $key=>$pic){
-                dd($key);
-           }
+            $updatedPics=json_decode($product->pic);
+            
+            foreach ($request->file('pic') as $key=>$pic){
+                // dd($key);
+                $filename=$pic->getClientOriginalName();
+                $filename=rand(0,1000).$filename;
+                $upload=$pic->storeAs("public/products",$filename);
+                $updatedPics[$key]=$filename;
+            }
+            
+
+            $update_items['pic']=json_encode($updatedPics);
+           
         }
-
+        
         
         $slug=Helper::sluggableCustomSlugMethod($request->title);
 
+        $update_items['name']=$request->title;
+        $update_items['slug']=$slug;
+        $update_items['price']=$request->price;
+        $update_items['content']=$request->content;
+
+        if($upload){
+            if($product->update($update_items)){
+                Alert::message("success","محصول با موفقیت ویرایش شد","success")->show();
+                return back();
+            }else{
+                Alert::message("error","خطا در ویرایش","error")->show();
+                return back();
+            }
+        }
 
     }
 

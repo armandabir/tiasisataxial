@@ -1,20 +1,35 @@
+import { useEffect, useState } from "react"
 import { BlueWhiteBg } from "../BlueWhiteBg"
 import Button from "../Button"
 import Card2 from "../Card2"
 import styles from "./../../../css/styles/categories/categories.module.scss"
+import { data } from "react-router-dom"
 
-export default function CatsContainer(){
+export default function CatsContainer({maincat}){
+    const [cats,setCats]=useState([])
+
+    async function fetchCats(maincat) {
+        const res = await fetch(`http://localhost:3000/api/getcats/${maincat}`)
+        const data = await res.json();
+        setCats(data);
+    }  
+    
+    
+    useEffect(()=>{
+        fetchCats(maincat);
+    },[])
+
+    console.log(cats)
+
     return (
         <section className={styles.categories}>
             <div className={styles.catsMenu}>
                 <nav>
-                    <h3>دسته بندی محصولات</h3>
+                    <h3>{maincat==2?"دسته بندی محصولات":"دسته بندی مقالات"}</h3>
                     <ul>
-                        <li>دسته شماره 1</li>
-                        <li>دسته شماره 1</li>
-                        <li>دسته شماره 1</li>
-                        <li>دسته شماره 1</li>
-                        <li>دسته شماره 1</li>
+                        {
+                            cats.map((cat)=><li key={cat.id}>{cat.name}</li>)
+                        }
                     </ul>
                 </nav>
             </div>

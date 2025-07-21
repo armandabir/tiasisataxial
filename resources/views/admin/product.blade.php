@@ -1,9 +1,20 @@
 @extends("layouts.master-adminDashboard")
 
 
-@section("page",',ویرایش محصول')
+@section("page",'ویرایش محصول')
 
 @section("content")
+
+    <style>
+
+
+        .img-container img{
+            width: 100%;
+            height:100%;
+            object-fit:contain;
+        }
+
+    </style>
 <section class="content">
     <div class="container">
         <div class="row">
@@ -38,6 +49,18 @@
                                 {{$message}}
                             </strong>
                         @enderror
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            @foreach(json_decode($product->pic) as $pic)
+                                <div class="col-md-3">
+                                    <div class="img-container">
+                                        <img src='{{asset("storage/products/$pic")}}' alt="">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     
                     <div class="form-group">

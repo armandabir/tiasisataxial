@@ -37,9 +37,15 @@ Route::get('/', function () {
 //     return view('index');
 // });
 
-Route::get('/', function () {
+Route::get('/{any}', function () {  
     return view('index');
 })->name("home");
+
+
+Route::get('/cats/{any}', function () {  
+    return view('index');
+})->name("home");
+
 
 Route::get('/product/{any}', function () {
     $arman="test";
