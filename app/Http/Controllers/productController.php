@@ -17,9 +17,16 @@ class productController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($cat)
     {
-        //
+        if($cat==0){
+            $products=product::all();
+        }else{
+
+            $products=product::where("cat_id",$cat)-all();
+        }
+
+        return response()->json($products);
     }
 
     /**

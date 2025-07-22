@@ -7,19 +7,42 @@ import { data } from "react-router-dom"
 
 export default function CatsContainer({maincat}){
     const [cats,setCats]=useState([])
+    const [data,setData]=useState([])
+
 
     async function fetchCats(maincat) {
         const res = await fetch(`http://localhost:3000/api/getcats/${maincat}`)
         const data = await res.json();
         setCats(data);
+       
     }  
+
+    async function fetchProducts(cat=0) {
+        const res =await fetch(`http://localhost:3000/api/getProducts/${cat}`)
+        const data = await res.json();
+        setData(data)
+    }
+
+    async function getAricles(cat=0) {
+        const res =await fetch(`http://localhost:3000/api/getArticles/${cat}`)
+        const data = await res.json();
+        setData(data)
+    }
     
     
     useEffect(()=>{
         fetchCats(maincat);
+        if(maincat==2){
+            fetchProducts(0)
+        }
+
+        if(maincat==1){
+            getAricles(0)
+        }
+
     },[])
 
-    console.log(cats)
+    console.log(data)
 
     return (
         <section className={styles.categories}>
@@ -34,17 +57,18 @@ export default function CatsContainer({maincat}){
                 </nav>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-start md:w-10/12">
                 <div className={styles.catsCards}>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
-                    <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
+                   
+                    {
+                        data.map((card)=><Card2 key={card.id} img={`/storage/products/${JSON.parse(card.pic)[0]}`} tilte={card.name} initLikes={25} price={card.price}/>)
+                        
+                    }
+                       <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
+
                 </div>
              
-                <Button className="w-1/3 bg-orange-400 my-5">مشاهده بیشتر</Button>
+                <Button className="w-1/3 bg-orange-400 my-5 mx-auto">مشاهده بیشتر</Button>
                 
             </div>
 
