@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import Headers from "../Headers";
 import ProjectMain from "../components/projects/ProjectMain";
 
-
 export default function Projects(){
     return(
         <>

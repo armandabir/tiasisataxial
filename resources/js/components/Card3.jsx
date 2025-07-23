@@ -2,9 +2,9 @@ import styles from "./../../css/styles/Card3.module.scss";
 import arrowLeft from "./../../assets/ArrowLeft.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-export default function Card3({img,tilte,date}){
+export default function Card3({img,tilte,date,onclick}){
     return (
-        <article className={styles.card3}>
+        <article className={styles.card3} onClick={onclick}>
             <div className="h-60 rounded-xl overflow-hidden">
                 <img src={img} alt="" />
             </div>

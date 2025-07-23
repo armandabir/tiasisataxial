@@ -3,14 +3,18 @@ import delImg from "./../../../assets/cart/XCircle.png"
 import { useContext } from "react"
 import CartContext from "../store/CartContext"
 export default function Balance({items}){
-    const {addItem,removeItem}=useContext(CartContext)
+    const {addItem,removeItem,deleteItem}=useContext(CartContext)
 
        function HandleAddtoCart(item){
-        addItem(item)
+            addItem(item)
         }
 
         function HandleRemoveCart(item){
             removeItem(item)
+        }
+
+        function handleDeleteItem(item){
+            deleteItem(item)
         }
     return (
         <div className={styles.balance}>
@@ -37,7 +41,7 @@ export default function Balance({items}){
                                     </div>
                                 </li>
                                 <li>
-                                    <img src={delImg} alt="" />
+                                    <img src={delImg} onClick={()=>handleDeleteItem(item)} alt="" />
                                 </li>
                             </ul>
                         </li>

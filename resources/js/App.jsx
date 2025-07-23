@@ -7,6 +7,7 @@ import Product from './Pages/Product';
 import Services from './Pages/Services';
 import CardPage from './Pages/CartPage';
 import Projects from './Pages/projects';
+import Article from './Pages/Article';
 import { CartContextProvider } from './components/store/CartContext';
 
 const root = document.getElementById('app')
@@ -21,7 +22,8 @@ export default function App(){
                     <Route path='/about' element={<About/>}/>
                     <Route path='/product/:id' element={<Product/>}/>
                     <Route path='/services' element={<Services/>}/>
-                    <Route path='/projects' element={<Projects data={data}/>}/>
+                    <Route path='/projects' element={<Projects/>}/>
+                    <Route path='/article/:id' element={<Article/>}/>
                     <Route path='/cart' element={<CardPage/>}/>
                 </Routes>
             </CartContextProvider>

@@ -7,7 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(far,fas);
 
-export default function Card2({img,tilte,initLikes,price,like}){
+export default function Card2({img,tilte,initLikes,price,like,onclick}){
 
     const [heart,seHeart]=useState(like);
     const [likes,setLikes]=useState(initLikes)
@@ -21,7 +21,7 @@ export default function Card2({img,tilte,initLikes,price,like}){
     }
 
     return (
-        <article className={styles.card2}>
+        <article className={styles.card2} onClick={onclick}>
             <div className="h-60 rounded-xl overflow-hidden">
                 <img src={img} alt="" />
             </div>

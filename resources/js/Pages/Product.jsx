@@ -5,27 +5,49 @@ import ProductDesc from "../components/Product/ProductDesc";
 import ProductDetails from "../components/Product/ProductDetails";
 import ProductSlide from "../components/Product/ProductSlide";
 import Button from "../components/Button";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../components/store/CartContext";
 
-export default function Product({data}){
+export default function Product(){
     const {id}=useParams();
+    
     const {addItem}=useContext(CartContext);
-    function HandleAddtoCart(){
-        addItem(
-            {id,
-              "price":20000,
-              "name":"محصول تست"      
-            }
-         )
+    const [product,setPorduct]=useState();
+
+    
+    function HandleAddtoCart(item){
+        const {id,name,price}=item;
+        addItem({
+            id,
+            name,
+            price
+        })
     }
+
+    async function fetchProduct() {
+        const res = await fetch(`http://localhost:3000/api/fetchProduct/${id}`);
+        const data = await res.json();
+        setPorduct(data);
+        console.log("Test")
+    }
+
+    useEffect(()=>{
+         fetchProduct()
+    },[id])
+
     return (
         <>
             <Navbar/>
-            <ProductSlide/>
-            <ProductDesc/>
-            <ProductDetails/>
-            <Button className="bg-orange-400 md:w-1/4 w-4/5 md:mx-[38%] mx-[10%]" onclick={HandleAddtoCart}>خرید محصول</Button>
+             {!product ? (
+                <div>Loading...</div>
+             ):(
+                <>
+                    <ProductSlide items={JSON.parse(product.pic)}/>
+                    <ProductDesc product={product}/>
+                    <ProductDetails/>
+                </>
+             )}
+            <Button className="bg-orange-400 md:w-1/4 w-4/5 md:mx-[38%] mx-[10%]" onclick={()=>HandleAddtoCart(product)}>خرید محصول</Button>
             <Footer/>
         </>
     )

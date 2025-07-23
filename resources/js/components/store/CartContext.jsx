@@ -3,7 +3,8 @@ import { createContext, useReducer } from "react"
 const CartContext = createContext({
     items:[],
     addItem:(item)=>{},
-    removeItem:(item)=>{}
+    removeItem:(item)=>{},
+    deleteItem:(item)=>{}
 })
 
 let existItem=null;
@@ -40,9 +41,20 @@ function cartReducer(state,action){
             updatedItems.splice(existItem,1)
         }
         
-        console.log(updatedItems);
-
         return {...state,items:updatedItems};
+    }
+
+
+    if(action.type=="DELETE_ITEM"){
+        existItem=state.items.findIndex((item)=>item.id==action.item.id)
+        const updatedItems=[...state.items];
+        
+        if(existItem >-1){
+            updatedItems.splice(existItem,1)
+        }
+
+        return {...state,items:updatedItems}
+
     }
 
 
@@ -53,7 +65,7 @@ export function CartContextProvider({children}){
     const [cart,dispatchAction] = useReducer(cartReducer,{items:[]});
 
     function addItem(item){
-
+        // console.log(item)
         dispatchAction({type:"ADD_ITEM",item})
     }
 
@@ -61,11 +73,16 @@ export function CartContextProvider({children}){
         dispatchAction({type:"REMOVE_ITEM",item})
     }
 
+    function deleteItem(item){
+        dispatchAction({type:"DELETE_ITEM",item})
+    }
+
 
     const cartContext = {
         items:cart.items,
         addItem:addItem,
-        removeItem:removeItem
+        removeItem:removeItem,
+        deleteItem
     }
 
     return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>

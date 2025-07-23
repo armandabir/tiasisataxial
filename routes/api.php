@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\categoriesController;
+use App\Http\Controllers\blogController;
 use App\Http\Controllers\productController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 route::get('getcats/{cat}',[categoriesController::class,"getcats"]);
 route::get('getProducts/{cat}',[productController::class,"index"]);
+route::get('fetchProduct/{id}',[productController::class,"getProduct"]);
+
+route::get("/getArticles/{blog?}",[blogController::class,"index"])->name("blog");
+route::get("/article/{id?}",[blogController::class,"getArticle"])->name("article");

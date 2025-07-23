@@ -23,7 +23,7 @@ class productController extends Controller
             $products=product::all();
         }else{
 
-            $products=product::where("cat_id",$cat)-all();
+            $products=product::where("cat_id",$cat)->get();
         }
 
         return response()->json($products);
@@ -115,6 +115,12 @@ class productController extends Controller
         $tags=$product->tags()->get();
         $productcat=$product->subcat()->first();
         return view("admin.product",compact(['product','cats','tags','productcat']));
+    }
+
+
+    public function getProduct($id){
+        $product=product::where("id",$id)->first();
+        return response()->json($product);
     }
 
     /**

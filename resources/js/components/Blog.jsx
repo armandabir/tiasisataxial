@@ -6,14 +6,30 @@ import {Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { useEffect, useState } from "react";
 
 export default function Blog(){
+    const [data,setData]=useState([])
+    
+    async function fetchAricles(cat=0) {
+        const res =await fetch(`http://localhost:3000/api/getArticles/${cat}`)
+        const data = await res.json();
+        setData(data)
+    }
+
+    function handleOnclick(){
+        window.location.href="/cats/1"
+    }
+
+    useEffect(()=>{
+        fetchAricles()
+    },[])
     return(
         <section className={styles.Blog}>
             <div className={styles.container}>
                 <div className="md:w-1/4 md:h-full w-full md h-2/5 px-10 text-center flex flex-col">
-                    <h2 className="font-iranSansBold text-3xl mt-[30%] mb-[20%]">وبلاگ   و اخبار</h2>
-                    <Button className= "w-full bg-orange-400">مشاهده وبلاگ</Button>
+                    <h2 className="font-iranSansBold text-3xl mt-[30%] mb-[20%]">وبلاگ و اخبار</h2>
+                    <Button onclick={handleOnclick} className= "w-full bg-orange-400">مشاهده وبلاگ</Button>
                 </div>
                 <div className="md:w-3/4 md:h-full w-full h-3/5 relative">
                      <MySwiper 
@@ -40,14 +56,17 @@ export default function Blog(){
                                 prevEl:`.${styles.myprevBt}`
                             }}
             
-                            sectionCard={[
-                                
-                                <Card3  img="../../assets/ayegh.jpg" tilte="انواع تاسیسات در ساختمان" date="2 هفته پیش"/>,
-                                <Card3  img="../../assets/ayegh.jpg" tilte="انواع تاسیسات در ساختمان" date="2 هفته پیش"/>,
-                                <Card3  img="../../assets/ayegh.jpg" tilte="انواع تاسیسات در ساختمان" date="2 هفته پیش"/>,
-                                <Card3  img="../../assets/ayegh.jpg" tilte="انواع تاسیسات در ساختمان" date="2 هفته پیش"/>
-                                
-                            ]}
+                            sectionCard={
+
+                                data.map((article)=> (
+                                    <Card3 
+                                        key={article.id}  
+                                        img={`/storage/articles/${article.pic}`} 
+                                        tilte={article.title} 
+                                        date={article.updated_at ? article.updated_at.split('T')[0] : ''} // Only date part
+                                    />
+                                ))
+                            }
                             />
                     <button className={styles.mynextBt}><FontAwesomeIcon icon={faChevronLeft}/></button>
                     <button className={styles.myprevBt}><FontAwesomeIcon icon={faChevronRight} /></button>

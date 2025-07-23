@@ -20,14 +20,14 @@ class blogController extends Controller
      */
     public function index($category = null)
     {   
-        $cats=category::where("maincat_id",1)->get();
-        if($category==null){
+        // $cats=category::where("maincat_id",1)->get();
+        if($category==0){
             $articles=article::where("publish",1)->get();
-            
         }else{
             $articles=article::where("cat_id",$category)->where('publish',1)->get();
+            
         }
-        return view("blog",compact(['articles','cats']));
+        return response()->json($articles);
     }
 
     public function adminIndex(){
@@ -44,6 +44,19 @@ class blogController extends Controller
         }
 
         return view("article",compact(['article',"tags","relatedArticles",'cats']));
+    }
+
+
+    public function getArticle($id){
+        $article=new article();
+        $result=$article->where('id',$id)->first();
+        $tags=$result->tags;
+        $relatedArticles=[];
+        foreach ($tags as $tag){
+            $relatedArticles=$tag->article;
+        }
+
+        return response()->json($result);
     }
 
     /**

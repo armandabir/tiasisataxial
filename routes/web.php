@@ -33,11 +33,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route::get('/{any}', function () {
-//     return view('index');
-// });
 
-Route::get('/{any}', function () {  
+
+Route::get('/', function () {  
     return view('index');
 })->name("home");
 
@@ -45,6 +43,9 @@ Route::get('/{any}', function () {
 Route::get('/cats/{any}', function () {  
     return view('index');
 })->name("home");
+
+
+
 
 
 Route::get('/product/{any}', function () {
@@ -146,6 +147,8 @@ Route::any('captcha-test', function() {
    
 })->name("captcha-test");
 
-
+Route::get('/{any}', function () {
+    return view('index');
+})->where('any','.*');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

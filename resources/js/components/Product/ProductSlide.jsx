@@ -2,17 +2,19 @@ import { useState } from "react"
 import styles from "./../../../css/styles/product/productSlide.module.scss"
 import TransitionSection from "../TransitionSection"
 import Button from "./Button"
-export default function ProductSlide(){
-    const [img,setImage]=useState("/assets/product/product-img.jpg");
+export default function ProductSlide({items}){
+   const [imgs,setImage]=useState(items);
+
 
     return(
        <section className={styles.productSlide}>
-            <img src={img} alt=""/>
+            <img src={`/storage/products/${imgs[0]}`} alt=""/>
             <div className={styles.btContainer}>
-                 <Button setImg={()=>setImage("/assets/product/product-img.jpg")}/>
-                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
-                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
-                 <Button setImg={()=>setImage("/assets/product/product-img-5.jpg")}/>
+
+                  {
+                     items.map((img,index)=><Button key={index} img={img} setImg={()=>setImage([img])}/>)
+                  }
+             
                 
             </div>
 

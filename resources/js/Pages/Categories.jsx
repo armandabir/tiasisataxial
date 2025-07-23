@@ -10,7 +10,7 @@ export default function Categories () {
     return (
         <>
             <Navbar/>
-            <Header/>
+            <Header maincat={cat}/>
             <CatsContainer maincat={cat}/>
             <Footer/>
             <div className="h-20"></div>

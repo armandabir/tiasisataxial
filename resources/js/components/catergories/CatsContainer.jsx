@@ -3,12 +3,35 @@ import { BlueWhiteBg } from "../BlueWhiteBg"
 import Button from "../Button"
 import Card2 from "../Card2"
 import styles from "./../../../css/styles/categories/categories.module.scss"
-import { data } from "react-router-dom"
+import Card3 from "../Card3"
+
 
 export default function CatsContainer({maincat}){
     const [cats,setCats]=useState([])
     const [data,setData]=useState([])
 
+
+    function handleCartClick(id){
+        if(maincat==2){
+            window.location.href=`/product/${id}`
+        }
+
+        if(maincat==1){
+            window.location.href=`/article/${id}`    
+        }
+    }
+    
+
+
+    function handleCatBt(cat){
+        if(maincat==2){
+            fetchProducts(cat)
+        }
+
+        if(maincat==1){
+            fetchAricles(cat)
+        }
+    }
 
     async function fetchCats(maincat) {
         const res = await fetch(`http://localhost:3000/api/getcats/${maincat}`)
@@ -23,7 +46,7 @@ export default function CatsContainer({maincat}){
         setData(data)
     }
 
-    async function getAricles(cat=0) {
+    async function fetchAricles(cat=0) {
         const res =await fetch(`http://localhost:3000/api/getArticles/${cat}`)
         const data = await res.json();
         setData(data)
@@ -37,10 +60,10 @@ export default function CatsContainer({maincat}){
         }
 
         if(maincat==1){
-            getAricles(0)
+            fetchAricles(0)
         }
 
-    },[])
+    },[maincat])
 
     console.log(data)
 
@@ -51,7 +74,7 @@ export default function CatsContainer({maincat}){
                     <h3>{maincat==2?"دسته بندی محصولات":"دسته بندی مقالات"}</h3>
                     <ul>
                         {
-                            cats.map((cat)=><li key={cat.id}>{cat.name}</li>)
+                            cats.map((cat)=><li onClick={()=>handleCatBt(cat.id)} key={cat.id}>{cat.name}</li>)
                         }
                     </ul>
                 </nav>
@@ -61,7 +84,21 @@ export default function CatsContainer({maincat}){
                 <div className={styles.catsCards}>
                    
                     {
-                        data.map((card)=><Card2 key={card.id} img={`/storage/products/${JSON.parse(card.pic)[0]}`} tilte={card.name} initLikes={25} price={card.price}/>)
+                        data.map((card)=>{
+                            if(maincat==2){
+                                return <Card2 key={card.id} img={`/storage/products/${JSON.parse(card.pic)[0]}`} tilte={card.name} initLikes={25} price={card.price} onclick={()=>handleCartClick(card.id)}/>
+                            }
+
+                            if(maincat==1){
+                                return  <Card3 
+                                            key={card.id}  
+                                            img={`/storage/articles/${card.pic}`} 
+                                            tilte={card.title} 
+                                            date={card.updated_at ? card.updated_at.split('T')[0] : ''} // Only date part
+                                            onclick={()=>handleCartClick(card.id)}
+                                        />
+                            }
+                        })
                         
                     }
                        <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>

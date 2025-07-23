@@ -1,5 +1,5 @@
 import styles from "./../../../css/styles/categories/header.module.scss"
-export default function Header(){
+export default function Header({maincat}){
     return (
        <>
         <header className={styles.Header}>
@@ -7,14 +7,16 @@ export default function Header(){
                  <h3>دسته بندی</h3>
                  <ul>
                     <li>خانه . </li>
-                    <li>دسته بندی</li>
+                    <li>
+                        {maincat==1?'وبلاگ':'فروشگاه'}
+                    </li>
                  </ul>
 
                
             </div>
 
              <div className={styles.searchBox}>
-                <h4>دنبال محصول خاصی هستین ؟</h4>
+                <h4>دنبال {maincat==1?'مقاله':'محصول'} خاصی هستین ؟</h4>
                 <div className={styles.search}>
                     <input type="text" />
                 </div>
