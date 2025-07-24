@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use Laravel\Ui\Presets\React;
 use Illuminate\Support\Facades\Auth;
 use Kavenegar;
+use Kavenegar\KavenegarApi;
+use Shetabit\Multipay\Invoice;
+use Shetabit\Payment\Facade\Payment;
+use Shetabit\Multipay\Exceptions\InvalidPaymentException;
+
 class cartController extends Controller
 {
     /**
@@ -49,66 +54,86 @@ class cartController extends Controller
         return back();
     }
 
-    public function paycard($card){
+    public function paycard(Request $card){
+        // dd($card['items']);
         $toalPrice=0;
-        $card=json_decode($card);
-        session()->put("card",$card);
-        foreach(session('card') as $key=>$item){
-            $total=$item->qty*$item->price;
-            session()->put("card.$key",['qty'=>$item->qty,'price'=>$item->price,'total'=>$total]);
+        // $card=json_decode($card);
+        // session()->put("card",);
+        foreach($card['items'] as $key=>$item){
+         
+            $total=$item['qty']*$item['price'];
+            $key=$item['id'];
+            session()->put("card.$key",['qty'=>$item['qty'],'price'=>$item['price'],'total'=>$total]);
             $toalPrice+=$total;
         }
 
+        
         session()->put('pay.totalprice',$toalPrice);
+        return response()->json("ok");
+    }
 
 
+    public function payment(){
+        
         if(!Auth::user()){
             session()->put("inPayment",true);
             return redirect()->route('login');
         }
         
    
-        
+        $invoice = new Invoice;
 
-        $response = zarinpal()
-        ->merchantId('f180cd05-8761-4f37-97be-70a5f9a3248c') // تعیین مرچنت کد در حین اجرا - اختیاری
-        ->amount($toalPrice) // مبلغ تراکنش
-        ->request()
-        ->description('transaction info') // توضیحات تراکنش
-        ->callbackUrl('http://localhost:8000/verification') // آدرس برگشت پس از پرداخت
-        ->mobile('09123456789') // شماره موبایل مشتری - اختیاری
-        ->email('name@domain.com') // ایمیل مشتری - اختیاری
-        ->send();
-    
-    if (!$response->success()) {
-        return $response->error()->message();
-    }
-    
-    // ذخیره اطلاعات در دیتابیس
-    // $response->authority();
-    
-    // هدایت مشتری به درگاه پرداخت
-    return $response->redirect();
+        $invoice->amount(session()->get('pay.totalprice'));
+        // $invoice->amount(10000);
+        $invoice->detail(['detailName' => 'your detail goes here']);
+
+            $user = Auth::user();
+            $paymentId = md5(uniqid());
+
+            $callbackUrl=route("verification");    
+            $payment = \Shetabit\Payment\Facade\Payment::callbackUrl($callbackUrl);
+            $payment->purchase($invoice, function ($driver, $transactionId) {
+  
+            });
+        
+          return $payment->pay()->render();
+
+
     }
 
 
     public function verification(){
         
 
-        $authority = request()->query('Authority'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-        $status = request()->query('Status'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-        $response = zarinpal()
-            ->merchantId('f180cd05-8761-4f37-97be-70a5f9a3248c') // تعیین مرچنت کد در حین اجرا - اختیاری
-            ->amount(session('pay.totalprice'))
-            ->verification()
-            ->authority($authority)
-            ->send();
+        // $authority = request()->query('Authority'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
+        // $status = request()->query('Status'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
+        // $response = zarinpal()
+        //     ->merchantId('f180cd05-8761-4f37-97be-70a5f9a3248c') // تعیین مرچنت کد در حین اجرا - اختیاری
+        //     ->amount(session('pay.totalprice'))
+        //     ->verification()
+        //     ->authority($authority)
+        //     ->send();
 
-        if (!$response->success()) {
+        // if (!$response->success()) {
 
-            Alert::message("error",$response->error()->message(),"error")->show();
-            return redirect()->route('card');
+        //     Alert::message("error",$response->error()->message(),"error")->show();
+        //     return redirect()->route('card');
             
+        // }
+
+        try {
+        $receipt = Payment::amount(session()->get('pay.totalprice'))->transactionId(session()->get('transactionId'))->verify();
+
+        // You can show payment referenceId to the user.
+        echo $receipt->getReferenceId();
+        $status="OK" ;   
+        } catch (InvalidPaymentException $exception) {
+            
+                // when payment is not verified, it will throw an exception.
+                // We can catch the exception to handle invalid payments.
+                // getMessage method, returns a suitable message that can be used in user interface.
+            $status="FAILED";
+            echo $exception->getMessage();
         }
 
         // دریافت هش شماره کارتی که مشتری برای پرداخت استفاده کرده است
@@ -120,7 +145,7 @@ class cartController extends Controller
         // پرداخت موفقیت آمیز بود
         // دریافت شماره پیگیری تراکنش و انجام امور مربوط به دیتابیس
 
-        return redirect()->route('paymentStore',['refId'=>$response->referenceId(),'status'=>$status]);
+        return redirect()->route('paymentStore',['refId'=>$receipt->getReferenceId(),'status'=>$status]);
     }
 
     /**
@@ -131,6 +156,7 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(session('card'));
         $card=session('card');
         $order=new order();
 
@@ -138,7 +164,7 @@ class cartController extends Controller
         $order->price=session('pay.totalprice');
         $order->referenceId=$request->refId;
         $order->status=$request->status;
-        $order->description=session('pay.desc');
+        $order->description="test";
         $order->user_id=Auth::user()->id;
         if($order->save()){
             foreach ($card as $key=>$item){
@@ -151,7 +177,7 @@ class cartController extends Controller
             }
 
            
-            return $this->sendSms(Auth::user()->phone_number,$order->id,$item['total']);
+            return $this->sendSms(Auth::user()->phone_number,$order->id,session('pay.totalprice'));
         }else{
             Alert::message("error","سفارش ثبت نشد","error")->show();
         
@@ -160,6 +186,7 @@ class cartController extends Controller
 
 
     public function sendSms($number,$orderId,$price){
+            $kavenegar = new KavenegarApi('4B776D5359437550394544567034424B4C4339684739686C372F2F42592B36755241547A527144485A4E4D3D');
             try{
                 $sender = "1000689696";		//This is the Sender number
             
@@ -170,7 +197,7 @@ class cartController extends Controller
             
                 $receptor = array($number,"09113393966");			//Receptors numbers
             
-                $result = Kavenegar::Send($sender,$receptor,$message);
+                $result = $kavenegar->Send($sender,$receptor,$message);
                 if($result){
                     foreach($result as $r){
                         echo "messageid = $r->messageid";
@@ -196,7 +223,7 @@ class cartController extends Controller
                 echo $ex->getMessage();
             }
             Alert::message("success","سفارش با موفقیت ثبت شد","success")->show();
-            return redirect()->route('card');
+            return redirect()->route('home',2);
     }
 
     /**
