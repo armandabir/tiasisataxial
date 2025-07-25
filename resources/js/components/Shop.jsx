@@ -10,7 +10,7 @@ export default function Shop(){
             <div className={styles.banner}></div>
             <div className={styles.content}>
                 <div className="md:w-1/2 w-10/12">
-                    <Button className= "md:w-1/2 w-full bg-orange-400" onclick={handleShopClick}>مشاهده فروشگاه</Button>
+                    <Button className= "md:w-1/2 w-full h-full bg-orange-400" onclick={handleShopClick}>مشاهده فروشگاه</Button>
                 </div>
                 <div className="order-first md:order-last md:w-1/2 w-full ">
                     <h2>فروشگاه اینترنتی آکسیال</h2>

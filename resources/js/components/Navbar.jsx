@@ -59,20 +59,20 @@ export default function Navbar(){
                 </div>
             </li>
             <div className={styles.callBt}>
-                <a href=""></a>
+                <a className="block w-20 h-20" href="tel:09113847982"></a>
             </div>
             <ul className={`${styles.mobileMenu} md:hidden`}>
                 <li>
                     <ul>
                         <li>
-                            <a href="">
+                            <Link to="/">
                                 <FontAwesomeIcon icon={faHouse}/>
                                 <p>خانه</p>    
-                            </a>
+                            </Link>
                         </li>
                       
                         <li>
-                            <a href="">
+                            <a href="/admin/dashboard">
                                 <FontAwesomeIcon icon={faUser} />
                                 <p>ورود</p>
                             </a>
@@ -89,13 +89,13 @@ export default function Navbar(){
                             </a>
                         </li>
                         <li className="relative">
-                            <a href="">
+                            <Link to="/cart">
                                 <FontAwesomeIcon icon={faShoppingCart}/>
                                 <span className="absolute -top-3 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                                0
+                                 {totalCart}
                                 </span>
                                 <p>سبد خرید</p>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </li>

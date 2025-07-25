@@ -70,12 +70,15 @@
     position: absolute;
     top: 0;
     box-shadow: 0 0 10px #0000003b;
+    overflow: hidden;
     /* padding: 5px; */
 }
 
 
 .rectangle img{
     width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
 }
 
 .circleUser img {

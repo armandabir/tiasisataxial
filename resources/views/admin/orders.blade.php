@@ -1,6 +1,5 @@
 
 @extends('layouts.master-adminDashboard')
-@use("Hekmatinasser\Verta\Verta");
 @section('page','سفارشات')
 
 

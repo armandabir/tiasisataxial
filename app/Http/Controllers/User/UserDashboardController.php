@@ -182,7 +182,7 @@ class UserDashboardController extends Controller
             // dd(session()->all());
             if(session('inPayment')){
                 $card=json_encode(session('card'), JSON_UNESCAPED_UNICODE);
-                return redirect('/card/pay/'.$card);
+                return redirect('/payment');
             }else{
                 // dd(session('card'));   
                 return redirect()->route('home');

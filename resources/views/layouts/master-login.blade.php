@@ -43,6 +43,7 @@
 		
 		<script src="{{asset('jquery/jquery-3.7.1.min.js')}}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+		
 	</head>
 
 
@@ -51,7 +52,7 @@
 			<div class="topside">
 				<div class="rectangle">
 				<!-- <i class="fas fa-user-alt"></i> -->
-				<img src="{{asset('/img/logo.png')}}" alt="">
+					<img src='{{asset("assets/img/logo2.jpg")}}' alt="">
 				</div>
 			</div>
 

@@ -183,7 +183,13 @@ class AdminDashboardController extends Controller
     }
 
     public function orders(){
-        $orders=DB::table("orders")->select(["orders.*","users.firstName","users.lastName"])->leftJoin('users','orders.user_id','=','users.id')->orderBy('orders.id',"desc")->paginate(15);
+        if(Auth::user()->role_as<=1){
+            
+            $orders=DB::table("orders")->select(["orders.*","users.firstName","users.lastName"])->leftJoin('users','orders.user_id','=','users.id')->orderBy('orders.id',"desc")->paginate(15);
+        }else{
+            $orders=DB::table("orders")->select(["orders.*","users.firstName","users.lastName"])->leftJoin('users','orders.user_id','=','users.id')->where('users.id',Auth::user()->id)->orderBy('orders.id',"desc")->paginate(15);
+
+        }
         // dd($orders);
         return view('admin.orders',compact(['orders']));
     }

@@ -2,7 +2,6 @@
 
 
 @section('content')
-
 <form action="{{route('auth.check')}}" id="frmSignIn" method="post">
     @csrf
         <div class="form-row">
