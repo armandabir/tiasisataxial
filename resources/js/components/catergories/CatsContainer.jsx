@@ -65,7 +65,7 @@ export default function CatsContainer({maincat}){
 
     },[maincat])
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <section className={styles.categories}>

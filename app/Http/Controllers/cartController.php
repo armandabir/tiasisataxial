@@ -59,6 +59,9 @@ class cartController extends Controller
         $toalPrice=0;
         // $card=json_decode($card);
         // session()->put("card",);
+
+        session()->forget('card');
+        
         foreach($card['items'] as $key=>$item){
          
             $total=$item['qty']*$item['price'];
@@ -105,22 +108,6 @@ class cartController extends Controller
     public function verification(){
         
 
-        // $authority = request()->query('Authority'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-        // $status = request()->query('Status'); // دریافت کوئری استرینگ ارسال شده توسط زرین پال
-        // $response = zarinpal()
-        //     ->merchantId('f180cd05-8761-4f37-97be-70a5f9a3248c') // تعیین مرچنت کد در حین اجرا - اختیاری
-        //     ->amount(session('pay.totalprice'))
-        //     ->verification()
-        //     ->authority($authority)
-        //     ->send();
-
-        // if (!$response->success()) {
-
-        //     Alert::message("error",$response->error()->message(),"error")->show();
-        //     return redirect()->route('card');
-            
-        // }
-
         try {
         $receipt = Payment::amount(session()->get('pay.totalprice'))->transactionId(session()->get('transactionId'))->verify();
 
@@ -136,14 +123,6 @@ class cartController extends Controller
             echo $exception->getMessage();
         }
 
-        // دریافت هش شماره کارتی که مشتری برای پرداخت استفاده کرده است
-        // $response->cardHash();
-
-        // دریافت شماره کارتی که مشتری برای پرداخت استفاده کرده است (بصورت ماسک شده)
-        // $response->cardPan();
-
-        // پرداخت موفقیت آمیز بود
-        // دریافت شماره پیگیری تراکنش و انجام امور مربوط به دیتابیس
 
         return redirect()->route('paymentStore',['refId'=>$receipt->getReferenceId(),'status'=>$status]);
     }
@@ -164,7 +143,7 @@ class cartController extends Controller
         $order->price=session('pay.totalprice');
         $order->referenceId=$request->refId;
         $order->status=$request->status;
-        $order->description="test";
+        // $order->description="test";
         $order->user_id=Auth::user()->id;
         if($order->save()){
             foreach ($card as $key=>$item){
@@ -223,7 +202,8 @@ class cartController extends Controller
                 echo $ex->getMessage();
             }
             Alert::message("success","سفارش با موفقیت ثبت شد","success")->show();
-            return redirect()->route('home',2);
+            // dd(session()->all());
+            return redirect()->route('cats',2);
     }
 
     /**

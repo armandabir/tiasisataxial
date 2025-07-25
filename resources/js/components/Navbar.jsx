@@ -16,7 +16,7 @@ export default function Navbar(){
         return totalItems + item.qty;
     },0)
 
-    console.log(items)
+    // console.log(items)
 
     function handleLoginBt(){
         window.location.href = "/admin/dashboard";

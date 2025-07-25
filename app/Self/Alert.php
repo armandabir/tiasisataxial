@@ -23,4 +23,10 @@ Class Alert {
         session()->flash("icon",self::$icon);
     }
 
+    public function save(){
+        session()->keep("title",self::$title);
+        session()->keep("string",self::$string);
+        session()->keep("icon",self::$icon);
+    }
+
 }

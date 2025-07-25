@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function session(){
+        // if(session()->has('string')){
+
+        //     return response()->json(['has'=>true,'msg'=>session('string')]);
+        // }else{
+        //    return response()->json(['has'=>false,'msg'=>null]);
+        // }
+        return response()->json(session()->all());
+    }
 }

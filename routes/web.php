@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\categoriesController;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\Admin\tagsController;
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Models\product;
 use App\Models\view;
@@ -42,8 +43,9 @@ Route::get('/', function () {
 
 
 Route::get('/cats/{any}', function () {  
+    // dd(session()->all());
     return view('index');
-})->name("home");
+})->name("cats");
 
 
 
@@ -145,7 +147,7 @@ route::get("/blog/{blog?}",[blogController::class,"index"])->name("blog");
 route::get("/blog/article/{article}",[blogController::class,"article"])->name('article');
 route::post("/cart/payment",[cartController::class,"paycard"]);
 Route::middleware('web')->post('/api/cart/payment', [CartController::class, 'paycard']);
-
+Route::middleware('web')->post('/api/session', [HomeController::class, 'session']);
 route::get("/payment",[cartController::class,'payment']);
 Route::get("/verification",[cartController::class,'verification'])->name('verification');
 route::get("/paymentStore",[cartController::class,'store'])->name('paymentStore');
