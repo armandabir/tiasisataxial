@@ -25,7 +25,7 @@ export default function Product(){
     }
 
     async function fetchProduct() {
-        const res = await fetch(`http://localhost:3000/api/fetchProduct/${id}`);
+        const res = await fetch(`/api/fetchProduct/${id}`);
         const data = await res.json();
         setPorduct(data);
         console.log("Test")

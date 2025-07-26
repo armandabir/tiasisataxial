@@ -7,7 +7,7 @@ export default function ProjectMain ({project}){
             <Head img={project.pic}/>
             <div className={styles.content}>
                 {project.content && (
-                    <div dangerouslySetInnerHTML={{ __html: project.content }} />
+                    project.content
                 )}
             </div>
             <Button className="bg-orange-400 w-1/4 mx-auto my-5">تماس باما</Button>

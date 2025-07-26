@@ -12,7 +12,7 @@ export default function Blog(){
     const [data,setData]=useState([])
     
     async function fetchAricles(cat=0) {
-        const res =await fetch(`http://localhost:3000/api/getArticles/${cat}`)
+        const res =await fetch(`/api/getArticles/${cat}`)
         const data = await res.json();
         setData(data)
     }
@@ -20,6 +20,11 @@ export default function Blog(){
     function handleOnclick(){
         window.location.href="/cats/1"
     }
+
+      function handleCartClick(id){
+        window.location.href=`/article/${id}`    
+    }
+    
 
     useEffect(()=>{
         fetchAricles()
@@ -64,6 +69,7 @@ export default function Blog(){
                                         img={`/storage/articles/${article.pic}`} 
                                         tilte={article.title} 
                                         date={article.updated_at ? article.updated_at.split('T')[0] : ''} // Only date part
+                                        onclick={()=>handleCartClick(article.id)}
                                     />
                                 ))
                             }

@@ -1,7 +1,7 @@
+import Content from "../components/article/Content";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Headers from "../Headers";
-import ProjectMain from "../components/projects/ProjectMain";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export default function Article(){
     const [article,setArticle]=useState();
     
     async function fetchAricle() {
-        const res = await fetch(`http://localhost:3000/api/article/${id}`);
+        const res = await fetch(`/api/article/${id}`);
         const data = await res.json();
         setArticle(data);
        
@@ -30,7 +30,7 @@ export default function Article(){
         (
         <>
             <Headers title={article.title} img={`/storage/articles/${article.pic}`} dark/>
-            <ProjectMain project={article}/>
+            <Content content={article}/>
         </>
         )
 

@@ -34,20 +34,20 @@ export default function CatsContainer({maincat}){
     }
 
     async function fetchCats(maincat) {
-        const res = await fetch(`http://localhost:3000/api/getcats/${maincat}`)
+        const res = await fetch(`/api/getcats/${maincat}`)
         const data = await res.json();
         setCats(data);
        
     }  
 
     async function fetchProducts(cat=0) {
-        const res =await fetch(`http://localhost:3000/api/getProducts/${cat}`)
+        const res =await fetch(`/api/getProducts/${cat}`)
         const data = await res.json();
         setData(data)
     }
 
     async function fetchAricles(cat=0) {
-        const res =await fetch(`http://localhost:3000/api/getArticles/${cat}`)
+        const res =await fetch(`/api/getArticles/${cat}`)
         const data = await res.json();
         setData(data)
     }

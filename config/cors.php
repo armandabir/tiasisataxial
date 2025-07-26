@@ -25,7 +25,8 @@ return [
         ,'http://[::1]:5173',
         'http://0.0.0.0:5173',
         'http://localhost:3000',
-        'http://0.0.0.0:3000/api/'
+        'http://0.0.0.0:3000/api/',
+        'https://new.tasisataxial.com/'
     ],
 
     'allowed_origins_patterns' => [],
