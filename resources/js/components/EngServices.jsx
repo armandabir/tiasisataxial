@@ -11,8 +11,10 @@ export default function EngServices(){
     
     return (
         <section className={styles.container}>
+            <h2 className="font-iranSansBold text-3xl text-center">ارائه خدمات مهندسی</h2>
             <BlueWhiteBg className="md:h-4/5 h-800 -scale-y-100 absolute w-full left-1/2 -translate-x-2/4 z-10"/>
             <div className={styles.cards}>
+                
                 <Card1 className="bg-[url('/resources/assets/rectangle1.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از تخصص و تجربه، در تمامی مراحل طراحی، نظارت و مشاوره فنی پروژه‌های ساختمانی همراه شما هستند تا بهترین راهکارهای مهندسی را ارائه دهند"/>
                 <Card1 className="bg-[url('/resources/assets/rectangle2.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از تخصص و تجربه، در تمامی مراحل طراحی، نظارت و مشاوره فنی پروژه‌های ساختمانی همراه شما هستند تا بهترین راهکارهای مهندسی را ارائه دهند"/>
                 <Card1 className="bg-[url('/resources/assets/rectangle3.jpg')] bg-auto" icon={bolt1} title="مهندسین مشاور" desc="مهندسین مشاور با بهره‌گیری از تخصص و تجربه، در تمامی مراحل طراحی، نظارت و مشاوره فنی پروژه‌های ساختمانی همراه شما هستند تا بهترین راهکارهای مهندسی را ارائه دهند"/>

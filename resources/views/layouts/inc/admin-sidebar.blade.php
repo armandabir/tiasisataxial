@@ -186,7 +186,7 @@
               </ul>
             </li>
             @canany(['admins','superadmin'])
-           <li class="nav-header">صفحه اصلی</li>
+           <!-- <li class="nav-header">صفحه اصلی</li> -->
             <!-- <li class="nav-item">
               <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
@@ -235,6 +235,33 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                  <a href="pages/examples/invoice.html" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>صفحه اصلی
+
+                      <i class="fa fa-angle-left right"></i>
+                    </p>
+                    
+                  </a>
+                  <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                        <a href="pages/examples/invoice.html" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>اسلایدر</p>
+                        </a>
+                      </li>
+
+                       <li class="nav-item">
+                        <a href="pages/examples/invoice.html" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>ارائه خدمات مهندسی</p>
+                        </a>
+                      </li>
+                  </ul>
+
+
+                </li>
                 <li class="nav-item">
                   <a href="pages/examples/invoice.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
@@ -244,13 +271,33 @@
                 <li class="nav-item">
                   <a href="pages/examples/profile.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>معرفی </p>
+                    <p>نمایندگی فروش 
+                        <i class="fa fa-angle-left right"></i>
+                    </p>
                   </a>
+
+                  <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="pages/examples/invoice.html" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>افزودن</p>
+                        </a>
+                      </li>
+
+                       <li class="nav-item">
+                        <a href="pages/examples/invoice.html" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>نمایدگی های من</p>
+                        </a>
+                      </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="pages/examples/login.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p> درباره </p>
+                    <p> محاسبات 
+                      
+                    </p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -262,7 +309,7 @@
                 <li class="nav-item">
                   <a href="pages/examples/lockscreen.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>مشاوره</p>
+                    <p>پروژه ها</p>
                   </a>
                 </li>
               </ul>
