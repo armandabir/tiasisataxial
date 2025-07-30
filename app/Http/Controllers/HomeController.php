@@ -26,6 +26,33 @@ class HomeController extends Controller
         return view('home');
     }
 
+
+    public function create($page_id,$section_id){
+            switch ($page_id) {
+                case 1:
+                    if($section_id==1){
+                        return view("admin.pages.slider");
+                    }
+
+                    if($section_id==2){
+                        
+                    }
+
+                    break;
+               
+                case 2:
+                    # code...
+                    break;
+               case 3:
+                    # code...
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+    }
+
+
     public function session(){
         // if(session()->has('string')){
 
