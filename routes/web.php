@@ -111,7 +111,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     route::get("orderPrint",[AdminDashboardController::class,"orderPrint"])->name("orderPrint");
 
+    route::get('pages/create/{page_id}/{section_id}',[HomeController::class,"create"])->name('admin.home');
+    route::get("pages/show/{page_id}/{sect_id}",[HomeController::class,"show"])->name('admin.pages.show');
+    route::post('pages/store/{page_id}/{sect_id}',[HomeController::class,'store'])->name('admin.pages.store');
+    route::get("page/item/edit/{page}",[HomeController::class,'edit'])->name('page.item.edit');
+    route::get("page/item/delete/{page}",[HomeController::class,'destroy'])->name('page.item.delete');
+    route::post('pages/update/{page?}/{page_id?}/{sect_id?}',[HomeController::class,'update'])->name('admin.pages.update');
 });
+
 
 
 Route::prefix('user')->middleware(['auth'])->group(function(){
@@ -143,7 +150,7 @@ route::get("user/create",[UserAuthController::class,"create"])->name("user.creat
 route::POST("/register",[UserAuthController::class,"store"])->name("user.register");
 
 
-route::get("/blog/{blog?}",[blogController::class,"index"])->name("blog");
+// route::get("/blog/{blog?}",[blogController::class,"index"])->name("blog");
 route::get("/blog/article/{article}",[blogController::class,"article"])->name('article');
 route::post("/cart/payment",[cartController::class,"paycard"]);
 Route::middleware('web')->post('/api/cart/payment', [CartController::class, 'paycard']);

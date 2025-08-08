@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\page;
+use App\Models\view;
+use App\Self\Alert;
 
 class HomeController extends Controller
 {
@@ -27,15 +30,17 @@ class HomeController extends Controller
     }
 
 
-    public function create($page_id,$section_id){
+    public function create($page_id,$sect_id){
+
             switch ($page_id) {
                 case 1:
-                    if($section_id==1){
-                        return view("admin.pages.slider");
+                    if($sect_id==1){
+                        $page=page::where('page_id',$page_id)->where('sect_id',$sect_id)->first();
+                        return view("admin.pages.mainpage.slider",compact(['page']));
                     }
 
-                    if($section_id==2){
-                        
+                    if($sect_id==2){
+                         return view("admin.pages.mainpage.engservices",compact(['page_id','sect_id']));
                     }
 
                     break;
@@ -50,6 +55,136 @@ class HomeController extends Controller
                     # code...
                     break;
             }
+    }
+
+
+    public function show($page_id,$sect_id){
+       $items=page::where('page_id',$page_id)->where('sect_id',$sect_id)->get();
+
+        return view('admin.pages.show',compact(['items']));
+
+    }
+
+
+    public function store(Request $request,$page_id,$sect_id){
+
+        $this->validate($request,['pic.*'=>"mimes:jpg,jpeg,png,tif"],[
+            'pic.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
+            
+            'desc.min'=>"حداقل 10 کاراکتر",
+        ]);
+
+        if($request->filled('title')){
+           $this->validate($request,['title'=>'min:3'],['title.min'=>"حداقل 3 کاراکتر",]);
+        }
+
+    
+        if($request->filled('desc')){
+             $this->validate($request,['desc'=>'min:10'],['desc.min'=>"حداقل 10 کاراکتر",]);
+        }
+
+        $page = new page();
+        
+        if($request->has('pic')){
+            $pics=[];
+            foreach($request->file("pic") as $pic ){
+                $filename=$pic->getClientOriginalName();
+                $filename=rand(0,1000).$filename;
+                $upload=$pic->storeAs("public/pages",$filename);
+                $pics[]=$filename;
+            }
+          $page->pic=json_encode($pics);
+        }
+
+        if($request->has('checkcount')){
+            $limit=$request->checkcount;
+            $pageitem=page::where('page_id',$page_id)->where('sect_id',$sect_id)->get();
+            if(count($pageitem) >= $limit){
+                Alert::message('error','تعداد ایتم های مجاز '. $limit . 'می باشد','error')->show();
+                return back();
+            };
+        }
+
+
+        
+        // dd($result);
+   
+        $page->page_id=$page_id;
+        $page->sect_id=$sect_id;
+        $page->title=$request->title;
+        $page->sect_name=$request->sect_name;
+        $page->desc=$request->desc;
+
+        if($page->save()){
+            Alert::message('succcess','آیتم با موفقیت ثیت شد ','success')->show();
+            return back();
+        }else{
+            Alert::message('error','خطا در ثبت','error')->show();
+        }
+        
+        
+    }
+
+    public function update(Request $request,Page $page){
+
+ 
+
+           if($request->hasFile('pic')){
+                $this->validate($request,["pic.*"=>"mimes:jpg,jpeg,png,tif"],[
+                    'pic.*.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
+                ]);
+            
+            
+            $update_items=[]; 
+
+            $updatedPics=json_decode($page->pic);
+            
+            foreach ($request->file('pic') as $key=>$pic){
+                // dd($key);
+                $filename=$pic->getClientOriginalName();
+                $filename=rand(0,1000).$filename;
+                $upload=$pic->storeAs("public/pages",$filename);
+                $updatedPics[$key]=$filename;
+            }
+            
+
+            $update_items['pic']=json_encode($updatedPics);
+           
+        }
+
+        if($request->filled('title')){
+           $this->validate($request,['title'=>'min:3'],['title.min'=>"حداقل 3 کاراکتر",]);
+           $update_items['title']=$request->title;
+        }
+
+    
+        if($request->filled('desc')){
+             $this->validate($request,['desc'=>'min:10'],['desc.min'=>"حداقل 10 کاراکتر",]);
+             $update_items['desc']=$request->desc;
+        }
+
+
+        if($page->update($update_items)){
+
+            Alert::message('succcess','آیتم با موفقیت ویرایش شد ','success')->show();
+            }else{
+            Alert::message('error','خطا در ویرایش','error')->show();
+        }
+
+
+        return back();
+
+
+
+
+
+
+
+    }
+
+
+    public function destroy(page $page){
+        dd($page);
     }
 
 

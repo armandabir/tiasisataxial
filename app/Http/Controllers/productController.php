@@ -173,10 +173,10 @@ class productController extends Controller
             ]
         );
         
-        if($request->hasFile('pic')){
-            $this->validate($request,["pic.*"=>"required|mimes:jpg,jpeg,png,tif"],[
-                'pic.*.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
-            ]);
+            if($request->hasFile('pic')){
+                $this->validate($request,["pic.*"=>"required|mimes:jpg,jpeg,png,tif"],[
+                    'pic.*.mimes'=>"فرمت های مجاز:jpg,jpeg,png,tif",
+                ]);
             
             
             $update_items=[]; 

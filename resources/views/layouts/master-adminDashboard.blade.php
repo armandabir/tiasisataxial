@@ -26,6 +26,8 @@
     <link href="{{ asset('dashboard/dist/css/custom-dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/dist/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/dist/css/persian-datepicker.min.css') }}" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <script src="{{asset('js/chart.js')}}"></script>
     <script src="{{ asset('dashboard/js/jquery.min.js') }}"></script>

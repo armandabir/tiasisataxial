@@ -246,14 +246,14 @@
                   </a>
                   <ul class="nav nav-treeview">
                      <li class="nav-item">
-                        <a href="pages/examples/invoice.html" class="nav-link">
+                        <a href="{{route('admin.home',[1,1])}}" class="nav-link">
                           <i class="fa fa-circle-o nav-icon"></i>
                           <p>اسلایدر</p>
                         </a>
                       </li>
 
                        <li class="nav-item">
-                        <a href="pages/examples/invoice.html" class="nav-link">
+                        <a href="{{route('admin.home',[1,2])}}" class="nav-link">
                           <i class="fa fa-circle-o nav-icon"></i>
                           <p>ارائه خدمات مهندسی</p>
                         </a>

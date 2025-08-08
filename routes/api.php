@@ -28,5 +28,5 @@ route::get('getProducts/{cat}',[productController::class,"index"]);
 route::get('fetchProduct/{id}',[productController::class,"getProduct"]);
 
 route::get("/getArticles/{blog?}",[blogController::class,"index"])->name("blog");
-route::get("/article/{id?}",[blogController::class,"getArticle"])->name("article");
+route::get("/article/{id?}",[blogController::class,"getArticle"]);
 
