@@ -19,14 +19,15 @@ class categoriesController extends Controller
     public function indexArticle()
     {
         $cats=DB::table("categories")->where("maincat_id",1)->get();
-        // if(count($cats)>0){
-        //     foreach($cats as $cat){
-            
-        //     }
-        //     $subcats=
-        // }
         return view("admin/articleCategory",compact(['cats']));
     }
+
+       public function indexProject()
+    {
+        $cats=DB::table("categories")->where("maincat_id",3)->get();
+        return view("admin.projects.projectCategory",compact(['cats']));
+    }
+
 
 
     public function indexProduct(){
@@ -53,7 +54,7 @@ class categoriesController extends Controller
 
         $cats_table=new category();
         
-        if($request->maincat_id == 1){
+        if($request->maincat_id == 1 || $request->maincat_id == 3){
             $cats_table->parent_id=0;
         }else{
             $cats_table->parent_id=$request->cat_id;

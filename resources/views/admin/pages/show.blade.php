@@ -32,10 +32,16 @@ use App\Self\Helper;
                             <td>{{$item->title}}</td>
                             <td>
                                 @if($item->pic!=null)
-                                $pic=json_decode($item->pic);
-                                    <div class="img-container">
-                                        <img src='{{storage("pages/$pic[0]")}}' alt="">
-                                    </div>
+                                    @if(is_array(json_decode($item->pic,true)))
+                                        $pic=json_decode($item->pic,true)
+                                        <div class="img-container">
+                                            <img src='{{storage("pages/$pic[0]")}}' alt="">
+                                        </div>          
+                                    @else
+                                        <div class="img-container">
+                                            <img src='{{asset("storage/pages/$item->pic")}}' alt="">
+                                        </div>  
+                                    @endif
                                 @endif
                             </td>
                             <td>{{Helper::setText($item->desc)->remove_tags()->remove_img()->character_limiter(500)}}</td>

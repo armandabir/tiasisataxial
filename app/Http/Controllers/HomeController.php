@@ -43,6 +43,10 @@ class HomeController extends Controller
                          return view("admin.pages.mainpage.engservices",compact(['page_id','sect_id']));
                     }
 
+                      if($sect_id==3){
+                         return view("admin.pages.branches.createBranch",compact(['page_id','sect_id']));
+                    }
+
                     break;
                
                 case 2:
@@ -59,11 +63,11 @@ class HomeController extends Controller
 
 
     public function show($page_id,$sect_id){
+       
        $items=page::where('page_id',$page_id)->where('sect_id',$sect_id)->get();
-        
        if(count($items)==0){
         Alert::message("error","ایتمی برای ویرایش وجود ندارد",'error')->show();
-        return back();
+        return redirect()->route('admin.home',[$page_id,$sect_id]);
        }
 
         return view('admin.pages.show',compact(['items']));
@@ -91,15 +95,31 @@ class HomeController extends Controller
         $page = new page();
         
         if($request->has('pic')){
-            $pics=[];
-            foreach($request->file("pic") as $pic ){
-                $filename=$pic->getClientOriginalName();
-                $filename=rand(0,1000).$filename;
-                $upload=$pic->storeAs("public/pages",$filename);
-                $pics[]=$filename;
-            }
-          $page->pic=json_encode($pics);
+
+               if(is_array($request->pic)){
+                    
+                    $pics=[];
+                    foreach($request->file("pic") as $pic ){
+                        $filename=$pic->getClientOriginalName();
+                        $filename=rand(0,1000).$filename;
+                        $upload=$pic->storeAs("public/pages",$filename);
+                        $pics[]=$filename;
+                    }
+                    $page->pic=json_encode($pics);
+                
+                }else{
+
+                    $filename=$request->file('pic')->getClientOriginalName();
+                    $filename=rand(0,1000).$filename;
+                    $upload=$request->file('pic')->storeAs("public/pages",$filename);   
+                    $page->pic=$filename;
+                }
+          
         }
+
+
+       
+            
 
         if($request->has('checkcount')){
             $limit=$request->checkcount;
@@ -112,7 +132,6 @@ class HomeController extends Controller
 
 
         
-        // dd($result);
    
         $page->page_id=$page_id;
         $page->sect_id=$sect_id;
@@ -122,10 +141,12 @@ class HomeController extends Controller
 
         if($page->save()){
             Alert::message('succcess','آیتم با موفقیت ثیت شد ','success')->show();
-            return back();
+            
         }else{
             Alert::message('error','خطا در ثبت','error')->show();
         }
+
+        return back();
         
         
     }
@@ -168,9 +189,7 @@ class HomeController extends Controller
                     $filename=$request->file('pic')->getClientOriginalName();
                     $filename=rand(0,1000).$filename;
                     $upload=$request->file('pic')->storeAs("public/pages",$filename);   
-                    $updatedPics=$filename;
-
-                    $update_items['pic']=updatedPics;
+                    $update_items['pic']=$filename;
                 }
         }
 
@@ -196,18 +215,18 @@ class HomeController extends Controller
 
 
         return back();
-
-
-
-
-
-
-
     }
 
 
     public function destroy(page $page){
-        dd($page);
+
+        if($page->delete()){
+          Alert::message('succcess','آیتم با موفقیت حذف شد ','success')->show();
+        }else{
+          Alert::message('error','خطا در حذف','error')->show();
+        };
+
+        return back();
     }
 
 

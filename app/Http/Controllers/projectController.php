@@ -2,59 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\article;
+use Illuminate\Http\Request;
+
 use App\Models\category;
+use App\Models\project;
 use App\Models\tag;
 use App\Models\view;
 use App\Self\Alert;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Self\Helper;
 
-class blogController extends Controller
+
+class projectController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($category = null)
+      public function index($category = null)
     {   
         // $cats=category::where("maincat_id",1)->get();
         if($category==0){
-            $articles=article::where("publish",1)->get();
+            $projects=project::where("publish",1)->get();
         }else{
-            $articles=article::where("cat_id",$category)->where('publish',1)->get();
+            $projects=project::where("cat_id",$category)->where('publish',1)->get();
             
         }
-        return response()->json($articles);
+        return response()->json($projects);
     }
 
     public function adminIndex(){
-        $articles=article::all();
-        return view("admin.articles",compact(['articles']));
+        $projects=project::all();
+        return view("admin.projects.allprojects",compact(['projects']));
     }
 
-    public function article(article $article){
-        $tags=$article->tags;
-        $cats=category::all();
-        $relatedArticles=[];
-        foreach ($tags as $tag){
-            $relatedArticles=$tag->article;
-        }
+    // public function project(project $project){
+    //     $cats=category::all();
+    //     // $tags=$article->tags;
+    //     // $relatedArticles=[];
+    //     // foreach ($tags as $tag){
+    //     //     $relatedArticles=$tag->article;
+    //     // }
 
-        return view("article",compact(['article',"tags","relatedArticles",'cats']));
-    }
+    //     return view("admin.projects.project",compact(['project','cats']));
+    // }
 
 
-    public function getArticle($id){
-        $article=new article();
-        $result=$article->where('id',$id)->first();
-        $tags=$result->tags;
-        $relatedArticles=[];
-        foreach ($tags as $tag){
-            $relatedArticles=$tag->article;
-        }
+    public function getproject($id){
+        $project=new project();
+        $result=$project->where('id',$id)->first();
+        // $tags=$result->tags;
+        // $relatedArticles=[];
+        // foreach ($tags as $tag){
+        //     $relatedArticles=$tag->article;
+        // }
 
         return response()->json($result);
     }
@@ -66,9 +68,9 @@ class blogController extends Controller
      */
     public function create()
     {
-        $cats=DB::table('categories')->where('maincat_id',1)->get();
-        $tags=tag::all();
-        return view("admin.articleAdd",compact(['cats','tags']));
+        $cats=DB::table('categories')->where('maincat_id',3)->get();
+        // $tags=tag::all();
+        return view("admin.projects.projectAdd",compact(['cats']));
     }
 
     /**
@@ -92,22 +94,22 @@ class blogController extends Controller
       $slug=Helper::sluggableCustomSlugMethod($request->title);
       $filename=$request->file("pic")->getClientOriginalName();
       $filename=rand(0,1000).$filename;
-      $upload=$request->file('pic')->storeAs("public/articles",$filename);
+      $upload=$request->file('pic')->storeAs("public/projects",$filename);
 
-      $article=new article();
-      $article->cat_id=$request->cats_id;
-      $article->title=$request->title;
-      $article->slug=$slug;
-      $article->pic=$filename;
-      $article->content=$request->content;
+      $project=new project();
+      $project->cat_id=$request->cats_id;
+      $project->title=$request->title;
+      $project->slug=$slug;
+      $project->pic=$filename;
+      $project->content=$request->content;
 
       if($upload){
-        if($article->save()){
-            $article->tags()->sync($request->tags,false);
-            Alert::message("success","مقاله با موفقیت ثبت شد","success")->show();
+        if($project->save()){
+          
+            Alert::message("success","پروژه با موفقیت ثبت شد","success")->show();
             return back();
         }else{
-            Alert::message("error","مقاله ثبت نشد","error")->show();
+            Alert::message("error","پروژه ثبت نشد","error")->show();
             return back();
         }
       }
@@ -120,11 +122,11 @@ class blogController extends Controller
         $this->validate($request,["upload"=>"required|mimes:jpg,jpeg,png,tif,pdf"]);
         $fileName=$request->file("upload")->getClientOriginalName();
         $fileName=rand(0,1000).$fileName;
-        $upload=$request->file("upload")->storeAs("public/articles",$fileName);
+        $upload=$request->file("upload")->storeAs("public/projects",$fileName);
         
         echo json_encode([
-            'default'=> asset("storage/articles/".$fileName),
-            '500'=>asset("storage/articles/".$fileName)
+            'default'=> asset("storage/projects/".$fileName),
+            '500'=>asset("storage/projects/".$fileName)
         ]);
     }
     /**
@@ -133,12 +135,12 @@ class blogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(article $article)
+    public function show(project $project)
     {
-        $tags=tag::all();
-        $cats=category::where("maincat_id",1)->get();
+        // $tags=tag::all();
+      $cats=category::where("maincat_id",3)->get();
         // dd($article);
-       return view("admin.article",compact(['article','tags',"cats"]));
+       return view("admin.projects.project",compact(['project',"cats"]));
     }
 
     /**
@@ -147,17 +149,17 @@ class blogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(article $article)
+    public function publish(project $project)
     {
-        if($article->publish==0){
+        if($project->publish==0){
             $update_items=['publish'=>1];
-            $message="مقاله با موفقیت منشر شد";
+            $message="پروژه با موفقیت منتشر شد";
         }else{
             $update_items=['publish'=>0];
             $message="انشار لغو شد";
         }
 
-        if($article->update($update_items)){
+        if($project->update($update_items)){
             Alert::message("success",$message,"success")->show();
             return back();
         }else{
@@ -173,7 +175,7 @@ class blogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, article $article)
+    public function update(Request $request, project $project)
     {
         $this->validate($request,['title'=>"required|min:3","pic"=>"mimes:jpg,jpeg,png,tif","content"=>"required|min:10"],
         ['name.required'=>"این فیلد اجباری است",
@@ -199,12 +201,11 @@ class blogController extends Controller
         $update_items['cat_id']=$request->cat_id;
         
 
-        if($article->update($update_items)){
-            $article->tags()->sync($request->tags,true);
-            Alert::message("success","مقاله با موفقیت ویرایش شد","success")->show();
-            return redirect()->route('article.show',$article);
+        if($project->update($update_items)){
+            Alert::message("success","پروژه با موفقیت ویرایش شد","success")->show();
+            return redirect()->route('project.show',$project);
         }else{
-            Alert::message("error","مقاله ویرایش نشد","error")->show();
+            Alert::message("error","پروژه ویرایش نشد","error")->show();
             return back();
         }
     }
@@ -214,10 +215,10 @@ class blogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(article $article)
+    public function destroy(project $project)
     {
-        $article->delete();
-        Alert::message("success","مقاله با موفقیت حذف شد","success")->show();
+        $project->delete();
+        Alert::message("success","پروژه با موفقیت حذف شد","success")->show();
         return back();
     }
 }

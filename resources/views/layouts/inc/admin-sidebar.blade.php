@@ -278,14 +278,14 @@
 
                   <ul class="nav nav-treeview">
                         <li class="nav-item">
-                        <a href="pages/examples/invoice.html" class="nav-link">
+                        <a href="{{route('admin.home',[1,3])}}" class="nav-link">
                           <i class="fa fa-circle-o nav-icon"></i>
                           <p>افزودن</p>
                         </a>
                       </li>
 
                        <li class="nav-item">
-                        <a href="pages/examples/invoice.html" class="nav-link">
+                        <a href="{{route('admin.pages.show',[1,3])}}" class="nav-link">
                           <i class="fa fa-circle-o nav-icon"></i>
                           <p>نمایدگی های من</p>
                         </a>
@@ -307,10 +307,34 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/lockscreen.html" class="nav-link">
+                  <a href="pages/examples/profile.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>پروژه ها</p>
+                    <p>پروژه ها 
+                        <i class="fa fa-angle-left right"></i>
+                    </p>
                   </a>
+
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{route('project.cats')}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>دسته افزودن</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{route('project.create')}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>پروژه افزودن</p>
+                        </a>
+                      </li>
+
+                       <li class="nav-item">
+                        <a href="{{route('project.list')}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>پروژه های من</p>
+                        </a>
+                      </li>
+                  </ul>
                 </li>
               </ul>
             </li>

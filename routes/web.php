@@ -10,6 +10,7 @@ use App\Http\Controllers\blogController;
 use App\Http\Controllers\Admin\tagsController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\projectController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Models\product;
 use App\Models\view;
@@ -87,8 +88,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::get("blog/tag/show/{tag}",[tagsController::class,"show"])->name("tag.show");
     Route::get("blog/tag/delete/{tag}",[tagsController::class,"destroy"])->name("tag.delete");
     Route::post("blog/tag/update/{tag}",[tagsController::class,"update"])->name("tag.update");
+
+
     Route::get("article/category",[categoriesController::class,"indexArticle"])->name("article.cats");
     Route::get("product/category",[categoriesController::class,"indexProduct"])->name("product.cats");
+    Route::get("project/category",[categoriesController::class,"indexProject"])->name("project.cats");
 
     
     route::get("user/create",[AdminDashboardController::class,"create"])->name("admin.userCreate");
@@ -103,6 +107,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     route::get('product/publish/{product}',[productController::class,"publish"])->name("product.publish");
     route::post("product/update/{product}",[productController::class,"update"])->name("product.update");
     route::post("product/delete/{product}",[productController::class,"destroy"])->name("product.delete");
+
+    route::get("project/list",[projectController::class,"adminIndex"])->name("project.list");
+    route::get("project/create",[projectController::class,"create"])->name("project.create");
+    route::post("project/store",[projectController::class,"store"])->name("project.store");
+    route::get('project/show/{project}',[projectController::class,"show"])->name("project.show");
+    route::get('project/publish/{project}',[projectController::class,"publish"])->name("project.publish");
+    route::post("project/update/{project}",[projectController::class,"update"])->name("project.update");
+    route::post("project/delete/{project}",[projectController::class,"destroy"])->name("project.delete");
+    Route::post("project/imageUpload",[projectController::class,"imgUploader"])->name("project.imageUploder");
 
 
     route::get("orders",[AdminDashboardController::class,'orders'])->name("orders");

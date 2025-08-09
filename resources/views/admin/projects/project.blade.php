@@ -1,23 +1,29 @@
-@extends ("layouts.master-adminDashboard")
+@extends('layouts.master-adminDashboard')
 
-@section('title',$item->title)
 
-@section('page',$item->title)
+@section('page','ویرایش پروژه')
 
 @section('content')
-
 <section class="content">
     <div class="container">
         <div class="row">
-            <form action="{{route('admin.pages.update',$item)}}" method="POST" enctype="multipart/form-data">
-               @csrf
-
-                    <input type="text" name="sect_name" value="{{$item->title}}" hidden>
-                    
-
+            <div class="col-md-8 mx-auto">
+                <form action="{{route('project.update',$project->slug)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <select name="cat_id" id="" class="form-control">
+                            @foreach($cats as $cat)
+                                @if($cat->id == $project->cat_id)
+                                   <option value="{{$cat->id}}" selected="selected">{{$cat->name}}</option>
+                                @else
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="title">عنوان</label>
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{$item->title}}">
+                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{$project->title}}">
                         @error('title')
                             <strong class="invalid-feedback">
                                 {{$message}}
@@ -25,29 +31,19 @@
                         @enderror
                     </div>
                     
-                    @if($item->pic)
-                        <div class="form-group">
-                        @if(is_array(json_decode($item->pic,true)))
-                            <label for="file">عکس</label>
-                            @foreach(json_decode($item->pic) as $pic)
-                                <input type="file" class="form-control @error('pic') is-invalid @enderror" id="file1" name="pic[]" value="">
-                            @endforeach
-                        @else
+                    <div class="form-group">
+                        <label for="file">عکس</label>
+                        <input type="file" class="form-control @error('pic') is-invalid @enderror" id="file" name="pic" value="{{old('pic')}}">
+                        @error('pic')
+                            <strong class="invalid-feedback">
+                                {{$message}}              
+                            </strong>
+                        @enderror
+                    </div>
 
-                             <input type="file" class="form-control @error('pic') is-invalid @enderror" id="file2" name="pic" value="">
-
-                        @endif
-
-                        </div>
-                    @endif
-
-
-                
-
-                @if($item->desc)
                     <div class="form-group">
                         <label for="editor">متن</label>
-                        <textarea name="desc" id="editor" class="form-control cke_rtl @error('desc') is-invalid @enderror" cols="30" rows="10">{{$item->desc}}</textarea>
+                        <textarea name="content" id="editor" class="form-control cke_rtl @error('content') is-invalid @enderror" cols="30" rows="10">{{$project->content}}</textarea>
                         @error('content')
                             <strong class="invalid-feedback">
                                 {{$message}}
@@ -55,22 +51,18 @@
                         @enderror
                     </div>
 
-                @endif
+       
 
 
-
-                <div class="form-group w-100 mx-auto mt-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                             <input type="submit" class="btn btn-primary btn-block" name="submit" value="ثبت">
-                        </div>
+                    <div class="form-group w-50 mx-auto mt-4">
+                        <input type="submit" class="btn btn-primary btn-block" name="submit" value="ثبت">
                     </div>
-                </div>
-            </form>
 
+                </form>
+            </div>
         </div>
-    </div>
 
+    </div>
 </section>
 
 <script src="{{asset('js/ckeditor/build/ckeditor.js')}}"></script>
@@ -132,7 +124,7 @@ ClassicEditor
         // integration to choose the right communication channel. This example uses
         // a POST request with JSON as a data structure but your configuration
         // could be different.
-        xhr.open( 'POST', "{{route('article.imageUploder',['_token'=>csrf_token()])}}", true );
+        xhr.open( 'POST', "{{route('project.imageUploder',['_token'=>csrf_token()])}}", true );
         xhr.responseType = 'json';
     }
 
@@ -195,10 +187,9 @@ ClassicEditor
 }
 
 </script>
-
 @if(session()->has('string'))
-
-    @include('layouts/alert')
+    @include('layouts.alert')
 @endif
 
 @endsection
+
