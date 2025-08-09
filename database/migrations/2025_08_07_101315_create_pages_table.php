@@ -16,7 +16,7 @@ return new class extends Migration
          Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id');
-            $table->integer('section_id');
+            $table->integer('sect_id');
             $table->string('sect_name',255);
             $table->string('title',255)->nullable();
             $table->string("pic",255)->nullable();

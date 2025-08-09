@@ -60,6 +60,11 @@ class HomeController extends Controller
 
     public function show($page_id,$sect_id){
        $items=page::where('page_id',$page_id)->where('sect_id',$sect_id)->get();
+        
+       if(count($items)==0){
+        Alert::message("error","ایتمی برای ویرایش وجود ندارد",'error')->show();
+        return back();
+       }
 
         return view('admin.pages.show',compact(['items']));
 
@@ -125,6 +130,13 @@ class HomeController extends Controller
         
     }
 
+
+    public function edit(Page $page){
+        $item=$page;    
+        return view('admin.pages.edit',compact(['item']));
+        
+    }
+
     public function update(Request $request,Page $page){
 
  
@@ -137,19 +149,29 @@ class HomeController extends Controller
             
             $update_items=[]; 
 
-            $updatedPics=json_decode($page->pic);
-            
-            foreach ($request->file('pic') as $key=>$pic){
-                // dd($key);
-                $filename=$pic->getClientOriginalName();
-                $filename=rand(0,1000).$filename;
-                $upload=$pic->storeAs("public/pages",$filename);
-                $updatedPics[$key]=$filename;
-            }
-            
+            $updatedPics=json_decode($page->pic,true);
+                if(is_array($updatedPics)){
+                    
+                    foreach ($request->file('pic') as $key=>$pic){
 
-            $update_items['pic']=json_encode($updatedPics);
-           
+                        $filename=$pic->getClientOriginalName();
+                        $filename=rand(0,1000).$filename;
+                        $upload=$pic->storeAs("public/pages",$filename);   
+                        $updatedPics[$key]=$filename;
+                    }
+                    
+
+                    $update_items['pic']=json_encode($updatedPics);
+ 
+                }else{
+
+                    $filename=$request->file('pic')->getClientOriginalName();
+                    $filename=rand(0,1000).$filename;
+                    $upload=$request->file('pic')->storeAs("public/pages",$filename);   
+                    $updatedPics=$filename;
+
+                    $update_items['pic']=updatedPics;
+                }
         }
 
         if($request->filled('title')){
@@ -163,8 +185,9 @@ class HomeController extends Controller
              $update_items['desc']=$request->desc;
         }
 
+        $result=$page->update($update_items);
 
-        if($page->update($update_items)){
+        if($result){
 
             Alert::message('succcess','آیتم با موفقیت ویرایش شد ','success')->show();
             }else{
