@@ -6,7 +6,26 @@ import Card2 from "./Card2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { map } from "lodash";
+import { useEffect, useState } from "react";
 export default function SaleAgency(){
+
+    
+            const [cards,setCard]=useState([]);
+        
+            async function listItems() {
+                const res =await fetch('/api/pages/listItems/1/3')
+                let data = await res.json();
+                setCard(data);
+    
+            }
+        
+            useEffect(()=>{
+                listItems();
+            },[])
+            
+
+
     return(
         <section className={styles.container}>
             <div className="relative z-30 flex md:flex-row flex-col md:px-20">
@@ -34,14 +53,9 @@ export default function SaleAgency(){
                     prevEl:`.${styles.myprevBt}`
                 }}
 
-                sectionCard={[
-                    
-                    <Card2 img="../../assets/ayegh.jpg" tilte="دیگ چگالی" initLikes={25} price={700}/>,
-                    <Card2 img="../../assets/ayegh.jpg" tilte="دیگ چگالی" initLikes={25} price={700}/>,
-                    <Card2 img="../../assets/ayegh.jpg" tilte="دیگ چگالی" initLikes={25} price={700}/>,
-                    <Card2 img="../../assets/ayegh.jpg" tilte="دیگ چگالی" initLikes={25} price={700}/>
-                  
-                ]}
+                sectionCard={
+                     cards.map((card)=>[ <Card2 img={`storage/pages/${card.pic}`} tilte={card.tilte} initLikes={25} price={700}/>,])
+                     }
                 />
                 <button className={styles.mynextBt}><FontAwesomeIcon icon={faChevronLeft}/></button>
                 <button className={styles.myprevBt}><FontAwesomeIcon icon={faChevronRight} /></button>

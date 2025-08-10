@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\categoriesController;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,4 @@ route::get('fetchProduct/{id}',[productController::class,"getProduct"]);
 route::get("/getArticles/{blog?}",[blogController::class,"index"])->name("blog");
 route::get("/article/{id?}",[blogController::class,"getArticle"]);
 
+route::get('/pages/listItems/{page_id}/{sect_id}',[HomeController::class,"listItems"]);

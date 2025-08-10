@@ -9,7 +9,7 @@ export default function MySwiper({imgs,sectionCard,className,...props}){
         <Swiper className={className} {...props}>
                 
                 {
-                   imgs && !sectionCard &&  imgs.map((img,index)=><SwiperSlide key={index}><img src={img} alt="" /></SwiperSlide>)
+                   imgs && !sectionCard &&  imgs.map((img,index)=><SwiperSlide key={index}><img src={`/storage/pages/${img}`} alt="" /></SwiperSlide>)
                    
                 }
 

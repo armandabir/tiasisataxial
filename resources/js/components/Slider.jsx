@@ -12,10 +12,33 @@ import img3 from "./../../assets/1.jpg"
 import img4 from "./../../assets/1.jpg"
 import img5 from "./../../assets/1.jpg"
 import mouseShape from "./../../assets/mouse.png"
+import { useEffect, useState } from "react";
 export default function Slider(){
+
+    const [imgs,setImgs]=useState([]);
+
+    async function listItems() {
+        const res =await fetch('/api/pages/listItems/1/1')
+        let data = await res.json();
+        data=JSON.parse(data[0].pic)
+        setImgs(Object.values(data))
+    }
+
+
+    useEffect(()=>{
+        listItems();
+    },[])
+    
+
+    // console.log(imgs)
+
+    // let imgs=JSON.parse(data[0].pic);
+
+
+
     return (
         <div className={styles.slider}>
-            <MySwiper imgs={[img1,img2,img3,img4,img5]} className="h-full" 
+            <MySwiper imgs={imgs} className="h-full" 
                     modules={[Autoplay,Navigation, Pagination, Scrollbar]}
                     autoplay={{
                         delay:3000,

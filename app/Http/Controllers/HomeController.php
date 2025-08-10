@@ -14,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -29,6 +29,15 @@ class HomeController extends Controller
         return view('home');
     }
 
+    //API
+
+    public function listItems($page_id,$sect_id){
+        $items=page::where('page_id',$page_id)->where('sect_id',$sect_id)->get();
+        return response()->json($items);
+
+    }
+
+    // 
 
     public function create($page_id,$sect_id){
 
@@ -73,6 +82,9 @@ class HomeController extends Controller
         return view('admin.pages.show',compact(['items']));
 
     }
+
+
+
 
 
     public function store(Request $request,$page_id,$sect_id){
