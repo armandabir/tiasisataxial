@@ -47,8 +47,8 @@
                 @if($item->desc)
                     <div class="form-group">
                         <label for="editor">متن</label>
-                        <textarea name="desc" id="editor" class="form-control cke_rtl @error('desc') is-invalid @enderror" cols="30" rows="10">{{$item->desc}}</textarea>
-                        @error('content')
+                        <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" cols="30" rows="10">{{$item->desc}}</textarea>
+                        @error('desc')
                             <strong class="invalid-feedback">
                                 {{$message}}
                             </strong>

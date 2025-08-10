@@ -41,7 +41,7 @@ export default function Navbar(){
                     </li>
                     <li>محاسبات و براورد</li>
                     <li>
-                        <Link to="/projects">پروژه ها</Link>
+                        <Link to="/cats/3">پروژه ها</Link>
                     </li>
                 </ul>
             </li>

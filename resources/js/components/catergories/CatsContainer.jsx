@@ -12,6 +12,12 @@ export default function CatsContainer({maincat}){
 
 
     function handleCartClick(id){
+
+         if(maincat==3){
+            window.location.href=`/projects/${id}`
+        }
+
+
         if(maincat==2){
             window.location.href=`/product/${id}`
         }
@@ -24,6 +30,9 @@ export default function CatsContainer({maincat}){
 
 
     function handleCatBt(cat){
+
+        
+
         if(maincat==2){
             fetchProducts(cat)
         }
@@ -31,6 +40,11 @@ export default function CatsContainer({maincat}){
         if(maincat==1){
             fetchAricles(cat)
         }
+
+        if(maincat==3){
+            fetchProjects(cat)
+        }
+
     }
 
     async function fetchCats(maincat) {
@@ -51,6 +65,13 @@ export default function CatsContainer({maincat}){
         const data = await res.json();
         setData(data)
     }
+
+
+        async function fetchProjects(cat=0) {
+        const res =await fetch(`/api/getProjects/${cat}`)
+        const data = await res.json();
+        setData(data)
+    }
     
     
     useEffect(()=>{
@@ -63,9 +84,13 @@ export default function CatsContainer({maincat}){
             fetchAricles(0)
         }
 
+          if(maincat==3){
+            fetchProjects(0)
+        }
+
     },[maincat])
 
-    // console.log(data)
+    console.log(data)
 
     return (
         <section className={styles.categories}>
@@ -89,6 +114,10 @@ export default function CatsContainer({maincat}){
                                 return <Card2 key={card.id} img={`/storage/products/${JSON.parse(card.pic)[0]}`} tilte={card.name} initLikes={25} price={card.price} onclick={()=>handleCartClick(card.id)}/>
                             }
 
+                              if(maincat==3){
+                                return <Card2 key={card.id} img={`/storage/projects/${card.pic}`} tilte={card.title} initLikes={25} onclick={()=>handleCartClick(card.id)}/>
+                             }
+
                             if(maincat==1){
                                 return  <Card3 
                                             key={card.id}  
@@ -101,7 +130,7 @@ export default function CatsContainer({maincat}){
                         })
                         
                     }
-                       <Card2 img="./../../assets/ayegh.jpg" tilte="پکیج خدمات 1 " initLikes={25} price={700}/>
+                      
 
                 </div>
              

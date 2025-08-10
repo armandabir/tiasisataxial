@@ -263,7 +263,7 @@
 
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/invoice.html" class="nav-link">
+                  <a href="{{route('admin.home',[2,0])}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>خدمات ما</p>
                   </a>
@@ -302,9 +302,43 @@
                 </li>
                 <li class="nav-item">
                   <a href="pages/examples/register.html" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p> تماس باما </p>
+                     <i class="fa fa-circle-o nav-icon"></i>
+                    <p> تماس باما 
+                        <i class="fa fa-angle-left right"></i>
+                    </p>
+                  
                   </a>
+
+                   <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{route('admin.home',[3,1])}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>آشنایی</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{route('admin.home',[3,2])}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>ویژگی ها</p>
+                        </a>
+                      </li>
+
+                       <li class="nav-item">
+                        <a href="{{route('admin.home',[3,3])}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>اهداف وماموریت</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="{{route('admin.home',[3,4])}}" class="nav-link">
+                          <i class="fa fa-circle-o nav-icon"></i>
+                          <p>اهداف</p>
+                        </a>
+                      </li>
+                  </ul>
+
+
                 </li>
                 <li class="nav-item">
                   <a href="pages/examples/profile.html" class="nav-link">

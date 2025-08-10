@@ -7,14 +7,73 @@ import SaleAgency from "../components/SaleAgency";
 import Shop from "../components/Shop";
 import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
+import { useEffect, useState } from "react";
 
 export default function Home(){
+
+   
+    const [data,setData]=useState({sliderImgs:null,cards:null,branches:null});
+    const[Loading,setLoading]=useState(true)
+    const[error,setError]=useState(null)
+
+    async function fetchSliderimgs() {
+        const res =await fetch('/api/pages/listItems/1/1')
+        let data = await res.json();
+        return JSON.parse(data[0].pic)
+    }
+
+   async function fetchengCards() {
+            const res =await fetch('/api/pages/listItems/1/2')
+            const data = await res.json();
+
+            return data
+            
+
+      }
+
+
+   async function fetchbranches() {
+            const res =await fetch('/api/pages/listItems/1/3')
+            const data = await res.json();
+            
+            return data
+
+      }
+
+    
+    async function fetchAll(){
+         try{
+            const [sliderImgs,cards,branches] = await Promise.all([
+               fetchSliderimgs(),
+               fetchengCards(),
+               fetchbranches()
+            ]);
+
+            setData({sliderImgs,cards,branches})
+            
+         }catch (error){
+            setError(error)
+         }finally{
+            setLoading(false)
+         }
+    }
+
+    useEffect(()=>{
+        fetchAll();
+    },[])
+    
+
+    if(Loading) return <div>loading...</div>
+    if(error) return <div>{error.message}</div>
+
+
+
     return(
        <>
           <Navbar/>
-          <Slider/>
-          <EngServices/>
-          <SaleAgency/>
+          <Slider imgs={data.sliderImgs}/>
+          <EngServices cards={data.cards}/>
+          <SaleAgency branches={data.branches}/>
           <Shop/>
           <Approch/>
           <Blog/>

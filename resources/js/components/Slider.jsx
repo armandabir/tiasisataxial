@@ -13,22 +13,8 @@ import img4 from "./../../assets/1.jpg"
 import img5 from "./../../assets/1.jpg"
 import mouseShape from "./../../assets/mouse.png"
 import { useEffect, useState } from "react";
-export default function Slider(){
+export default function Slider({imgs}){
 
-    const [imgs,setImgs]=useState([]);
-
-    async function listItems() {
-        const res =await fetch('/api/pages/listItems/1/1')
-        let data = await res.json();
-        data=JSON.parse(data[0].pic)
-        setImgs(Object.values(data))
-    }
-
-
-    useEffect(()=>{
-        listItems();
-    },[])
-    
 
     // console.log(imgs)
 

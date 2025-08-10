@@ -59,10 +59,29 @@ class HomeController extends Controller
                     break;
                
                 case 2:
-                    # code...
+                     return view("admin.pages.services.service",compact(['page_id','sect_id']));
+                    
                     break;
                case 3:
-                    # code...
+                    if($sect_id==1){
+                        return view("admin.pages.contact.intro",compact(['page_id','sect_id']));
+                    }
+
+                     if($sect_id==2){
+                        return view("admin.pages.contact.features",compact(['page_id','sect_id']));
+                    }
+
+                     if($sect_id==3){
+                         return view("admin.pages.contact.mission",compact(['page_id','sect_id']));
+                    }
+
+                    if($sect_id==4){
+                         return view("admin.pages.contact.goals",compact(['page_id','sect_id']));
+                    }
+
+                    if($sect_id==5){
+                        
+                    }
                     break;
                 default:
                     # code...

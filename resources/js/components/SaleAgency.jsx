@@ -8,23 +8,9 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { map } from "lodash";
 import { useEffect, useState } from "react";
-export default function SaleAgency(){
+export default function SaleAgency({branches}){
 
-    
-            const [cards,setCard]=useState([]);
-        
-            async function listItems() {
-                const res =await fetch('/api/pages/listItems/1/3')
-                let data = await res.json();
-                setCard(data);
-    
-            }
-        
-            useEffect(()=>{
-                listItems();
-            },[])
-            
-
+  
 
     return(
         <section className={styles.container}>
@@ -54,7 +40,7 @@ export default function SaleAgency(){
                 }}
 
                 sectionCard={
-                     cards.map((card)=>[ <Card2 img={`storage/pages/${card.pic}`} tilte={card.tilte} initLikes={25} price={700}/>,])
+                     branches.map((card)=>[ <Card2 img={`storage/pages/${card.pic}`} tilte={card.title} initLikes={25}/>,])
                      }
                 />
                 <button className={styles.mynextBt}><FontAwesomeIcon icon={faChevronLeft}/></button>

@@ -1,7 +1,7 @@
 import styles from "./../../../css/styles/About/goals.module.scss"
 import { BlueWhiteBg } from "./../../components/BlueWhiteBg";
 
-export default function Goals (){
+export default function Goals ({mission,goals}){
     return (
         <section className={styles.Goals}>
             <div className={styles.content}>
@@ -9,43 +9,32 @@ export default function Goals (){
                     <img src="/assets/about/our-process.jpg" alt="" />
                 </div>
                 <div className={styles.textContent}>
-                    <h2>اهداف و ماموریت ها</h2>
+                    <h2>{mission.title}</h2>
                     <p>
-                        .لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                        {
+                            mission.desc
+                        }
                     </p>
 
                     <div className={styles.cards}>
-                        <div className={styles.card}>
-                            <div className={styles.number}>01</div>
-                            <div className={styles.CardContent} >
-                                <h3>نام هدف و ماموریت اول تیم</h3>
-                                <p>
-                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، 
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className={styles.card}>
-                            <div className={styles.number}>01</div>
-                            <div className={styles.CardContent} >
-                                <h3>نام هدف و ماموریت اول تیم</h3>
-                                <p>
-                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، 
-                                </p>
-                            </div>
-                        </div>
+                        
+                        {
+                            goals.map((goal,index)=>
+                               <div key={index} className={styles.card}>
+                                    <div className={styles.number}>{index+1}</div>
+                                    <div className={styles.CardContent} >
+                                        <h3>{goal.title}</h3>
+                                        <p>
+                                            {goal.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        }
 
 
-                        <div className={styles.card}>
-                            <div className={styles.number}>01</div>
-                            <div className={styles.CardContent} >
-                                <h3>نام هدف و ماموریت اول تیم</h3>
-                                <p>
-                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، 
-                                     
-                                </p>
-                            </div>
-                        </div>
+
+                
                     </div>
                 </div>
             </div>

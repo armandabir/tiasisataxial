@@ -8,22 +8,8 @@ import Card1 from "./Card1"
 import TransitionSection from "./TransitionSection"
 import Card2 from "./Card2"
 import { useEffect, useState } from "react"
-export default function EngServices(){
+export default function EngServices({cards}){
 
-        const [cards,setCard]=useState([]);
-    
-        async function listItems() {
-            const res =await fetch('/api/pages/listItems/1/2')
-            let data = await res.json();
-            setCard(data);
-
-        }
-    
-        useEffect(()=>{
-            listItems();
-        },[])
-        
-    
     return (
         <section className={styles.container}>
             <h2 className="font-iranSansBold text-3xl text-center">ارائه خدمات مهندسی</h2>

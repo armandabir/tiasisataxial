@@ -8,12 +8,12 @@ export default function Card ({title,desc,tags,img,index}){
     return (
         <div className={`${styles.card} ${mystyles[rndNumber()]}`}>
             <div className={`${styles.imgContainer} ${index % 2 == 0 ? styles.order :""}`}>
-                <img src={img} alt="" />
+                <img src={`/storage/pages/${img}`} alt="" />
             </div>
             <div className={styles.content}>
-                {
+                {/* {
                     tags.map((tag)=><span>{tag.title}</span>)
-                }
+                } */}
                 
                 <div className={styles.container}>
                     <h2>{title}</h2>

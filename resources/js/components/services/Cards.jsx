@@ -1,7 +1,7 @@
 import styles from "./../../../css/styles/services/cards.module.scss"
 import {BlueWhiteBg} from "./../BlueWhiteBg"
 import Card from "./card"
-export default function Cards (){
+export default function Cards ({cards}){
 
     const services = [
         {
@@ -25,7 +25,7 @@ export default function Cards (){
         <section className={styles.cards}>
             <div className={styles.container}>
                 {
-                    services.map((service,index)=><Card index={index} title={service.title} desc={service.desc} img={service.img} tags={service.tags}/>)
+                    cards.map((service,index)=><Card index={index} title={service.title} desc={service.desc} img={service.pic}/>)
                 }
             </div>
             <div className="h-full w-full absolute flex flex-col left-1/2 -translate-x-1/2">

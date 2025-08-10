@@ -8,7 +8,9 @@ export default function Header({maincat}){
                  <ul>
                     <li>خانه . </li>
                     <li>
-                        {maincat==1?'وبلاگ':'فروشگاه'}
+                        {maincat==1?'وبلاگ':""}
+                        {maincat==2?'فروشگاه':""}
+                        {maincat==3?'پروژه ها':""}
                     </li>
                  </ul>
 
@@ -16,7 +18,16 @@ export default function Header({maincat}){
             </div>
 
              <div className={styles.searchBox}>
-                <h4>دنبال {maincat==1?'مقاله':'محصول'} خاصی هستین ؟</h4>
+                <h4>
+                    <span>دنبال</span>
+                    
+                
+                     {maincat==1?'وبلاگ':" "}
+                    {maincat==2?'فروشگاه':" "}
+                    {maincat==3?'پروژه ':" "}
+                    
+                
+                    خاصی هستین ؟</h4>
                 <div className={styles.search}>
                     <input type="text" />
                 </div>

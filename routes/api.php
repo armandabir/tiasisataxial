@@ -5,6 +5,7 @@ use App\Http\Controllers\blogController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\projectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 route::get('getcats/{cat}',[categoriesController::class,"getcats"]);
 route::get('getProducts/{cat}',[productController::class,"index"]);
-route::get('fetchProduct/{id}',[productController::class,"getProduct"]);
-
+route::get('getProjects/{cat}',[projectController::class,"index"]);
 route::get("/getArticles/{blog?}",[blogController::class,"index"])->name("blog");
+
+
+route::get('fetchProject/{id}',[projectController::class,"getproject"]);
+route::get('fetchProduct/{id}',[productController::class,"getProduct"]);
 route::get("/article/{id?}",[blogController::class,"getArticle"]);
 
 route::get('/pages/listItems/{page_id}/{sect_id}',[HomeController::class,"listItems"]);
