@@ -82,9 +82,9 @@ export default function Slider({imgs}){
                 </div>
                 <div className={styles.socialMedia}>
                     <div className={styles.btContainer}>
-                        <a href="">twitter</a>
-                        <a href="">Instagram</a>
-                        <a href="">Facebook</a>
+                        <a href=""> </a>
+                        <a href=""> </a>
+                        <a href=""> </a>
                     </div>
                     
                 </div>

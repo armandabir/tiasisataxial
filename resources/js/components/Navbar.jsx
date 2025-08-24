@@ -37,7 +37,7 @@ export default function Navbar(){
                         <Link to="/services">خدمات</Link>
                     </li>
                     <li>
-                        <Link to="/about">تماس با ما</Link>
+                        <Link to="/about">درباره ما</Link>
                     </li>
                     <li>محاسبات و براورد</li>
                     <li>

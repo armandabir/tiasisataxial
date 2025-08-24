@@ -30,7 +30,7 @@ export default function BuyInfo({items}){
     
     return (
         <div className={styles.buyinfo}>
-            <h2>اطلات خرید</h2>
+            <h2>اطلاعات خرید</h2>
             <div className={styles.table}>
                 <div>
                     <div>مجموع خرید</div>

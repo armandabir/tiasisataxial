@@ -1,6 +1,8 @@
 import styles from "./../../css/styles/footer.module.scss"
 import logo from "./../../assets/logo.png"
 import cert from "./../../assets/cert.png"
+import cert1 from "./../../assets/cert.png"
+import cert2 from "./../../assets/cert.png"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -15,7 +17,9 @@ export default function Footer(){
                         <img src={logo} alt="" />
                     </div>
                     <div className="text-justify">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                        <p>
+                            آدرس : رشت - بلوار نماز - ابتدای پل صابرین - نبش خیابان سوگند - طبقه اول
+                        </p>
                     </div>
                 </div>
                 <div className={styles.quickAccess}>
@@ -28,16 +32,16 @@ export default function Footer(){
                     </ul>
                 </div>
                 <div className={styles.contact}>
-                    <h3>راه‌های ارتباطی</h3>
+                    <h3>تلفن تماس</h3>
                     <ul>
                         <li>
-                            <span>همراه</span> <span>091111111</span>
+                             <span>09106742601</span>
                         </li>
                         <li>
-                            <span>همراه</span> <span>091111111</span>
+                             <span>09113343989</span>
                         </li>
                         <li>
-                            <span>همراه</span> <span>091111111</span>
+                             <span>09113847982</span>
                         </li>
                     </ul>
                 </div>
