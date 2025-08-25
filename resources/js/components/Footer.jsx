@@ -1,8 +1,10 @@
 import styles from "./../../css/styles/footer.module.scss"
 import logo from "./../../assets/logo.png"
-import cert from "./../../assets/cert.png"
-import cert1 from "./../../assets/cert.png"
-import cert2 from "./../../assets/cert.png"
+// import cert from "./../../assets/cert.png"
+import cert1 from "./../../assets/footer/cert1.jpg"
+import cert2 from "./../../assets/footer/cert2.jpg"
+import cert3 from "./../../assets/footer/cert3.jpg"
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -49,10 +51,13 @@ export default function Footer(){
                     <h3>مجوز ها</h3>
                     <div className="flex justify-around" >
                         <div>
-                            <img src={cert} alt="" />
+                            <img src={cert1} alt="" />
                         </div>
                         <div>
-                            <img src={cert} alt="" />
+                            <img src={cert2} alt="" />
+                        </div>
+                        <div>
+                            <img src={cert3} alt="" />
                         </div>
                     </div>
                 </div>

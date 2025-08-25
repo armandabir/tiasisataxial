@@ -1,10 +1,10 @@
 .Footer{
     @apply bg-[url("./../../assets/footbgMobile.jpg")] md:bg-[url("./../../assets/footbg.jpg")] bg-cover md:bg-contain xl:bg-cover bg-no-repeat md:p-10;
      div {
-        @apply  p-5;
+        @apply  p-3;
     }
     .upside{
-        @apply md:grid md:grid-cols-4 md:gap-5;
+        @apply md:grid md:grid-cols-5 md:gap-5;
         .quickAccess{
             h3 {
                 @apply text-[18px] font-iranSansBold;
@@ -31,6 +31,16 @@
         }
 
         .certs{
+            @apply col-span-2;
+            >div div {
+                @apply rounded-lg p-0 overflow-hidden w-1/4;
+
+                img{
+                    @apply w-full h-full object-cover;
+                }
+            }
+
+
             h3 {
                 @apply text-[18px] font-iranSansBold;
             }
