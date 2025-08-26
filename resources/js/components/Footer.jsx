@@ -14,7 +14,7 @@ export default function Footer(){
     return (
         <footer className={styles.Footer}>
            <div className={styles.upside}>
-                <div>
+                <div className={styles.address}>
                     <div>
                         <img src={logo} alt="" />
                     </div>
@@ -22,6 +22,9 @@ export default function Footer(){
                         <p>
                             آدرس : رشت - بلوار نماز - ابتدای پل صابرین - نبش خیابان سوگند - طبقه اول
                         </p>
+                    </div>
+                    <div className={styles.map}>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d222.66351052174983!2d49.58324921153576!3d37.29679896473633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1756239083999!5m2!1sen!2sus" className="w-full" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div className={styles.quickAccess}>

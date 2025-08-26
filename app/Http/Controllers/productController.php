@@ -204,7 +204,7 @@ class productController extends Controller
         $update_items['price']=$request->price;
         $update_items['content']=$request->content;
 
-        if($upload){
+        
             if($product->update($update_items)){
                 Alert::message("success","محصول با موفقیت ویرایش شد","success")->show();
                 return back();
@@ -212,7 +212,7 @@ class productController extends Controller
                 Alert::message("error","خطا در ویرایش","error")->show();
                 return back();
             }
-        }
+        
 
     }
 

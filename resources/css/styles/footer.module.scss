@@ -5,6 +5,15 @@
     }
     .upside{
         @apply md:grid md:grid-cols-5 md:gap-5;
+
+        .address{
+            @apply h-full;
+            .map{
+                @apply min-h-28 border-2;
+            }
+        }
+       
+
         .quickAccess{
             h3 {
                 @apply text-[18px] font-iranSansBold;
