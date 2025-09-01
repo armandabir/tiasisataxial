@@ -79,7 +79,9 @@ export default function Home(){
           <Blog/>
           <Apps/>
           <Footer/>
-          <div className="h-20"></div>
+          <div className="h-20 text-center pt-5">
+             <a className="block w-50" href="tel:+989113847982">طراح و برنامه نویس : آرمان دبیرمقدم</a>
+          </div>
        </>
     )
 }

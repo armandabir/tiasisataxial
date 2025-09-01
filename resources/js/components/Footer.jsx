@@ -6,9 +6,9 @@ import cert2 from "./../../assets/footer/cert2.jpg"
 import cert3 from "./../../assets/footer/cert3.jpg"
 
 
+import  bale  from "./../../assets/footer/bale.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 export default function Footer(){
     return (
@@ -69,17 +69,25 @@ export default function Footer(){
            <div className={styles.downside}>
                <div className={styles.social}>
                     <div>
-                        <FontAwesomeIcon icon={faWhatsapp}/>
+                        <a href="https://wa.me/+989113847982">
+                            <FontAwesomeIcon icon={faWhatsapp}/>
+                        </a>
+                    </div>
+                     <div>
+                        <a href="https://www.instagram.com/tasisataxial?igsh=MWhxZng3bzFkbnlwZw==">
+                            <FontAwesomeIcon icon={faInstagram}/>
+                        </a>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faLinkedin}/>
+                        <a href="https://web.bale.ai/+989113847982">
+                            <img src={bale} alt="" />
+                        </a>
                     </div>
-                    <div>
-                        <FontAwesomeIcon icon={faInstagram}/>
-                    </div>
+                   
                </div>
-               <div>
-                    <p>تمامی حقوق مادی و معنوی برای وبسایت محفوظ است</p>
+               <div className="p-1">
+                    <p className="hidden md:block">تمامی حقوق مادی و معنوی برای وبسایت محفوظ است</p>
+                    <a className=" block md:hidden w-1/4 text-xs p-1 pt-4" href="tel:+989361811998">برنامه نویس : آرمان دبیرمقدم</a>
                </div>
            </div>
 

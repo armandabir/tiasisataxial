@@ -138,7 +138,7 @@ export default function CatsContainer({maincat}){
                 
             </div>
 
-            <BlueWhiteBg className="absolute -z-10 -scale-y-[65%] top-2/3 md:top-1/2 -translate-y-2/4 left-1/2 -translate-x-1/2 h-4/5 w-full"/>
+            <BlueWhiteBg className="absolute -z-10 -scale-y-[65%] top-2/3 md:top-3/4 -translate-y-2/4 left-1/2 -translate-x-1/2 h-4/5 w-full"/>
         </section>
     )
 }
